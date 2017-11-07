@@ -10,7 +10,7 @@
 </head>
 <body>
 <h2>Enter your LoginId and Password</h2>
-<form:form action="login.htm" method="post" modelAttribute="loginDetails">
+<form:form action="login.htm" method="post" modelAttribute="users">
 <table>
 			<tr>
 				<td>LoginId:</td>
