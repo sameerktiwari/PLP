@@ -14,16 +14,18 @@ import com.cg.uas.entities.Users;
 
 @Repository
 @Transactional
-public class DAOImpl {
+public class DAOImpl implements IDAO{
 	
 	@PersistenceContext
 	EntityManager entityManager;
 	
+	@Override
 	public boolean validate(Users user){
-		TypedQuery<Users> query=entityManager.createQuery("Select user from users user where user.loginId=:loginid and user.password=:pwd and role=:role", Users.class);
-		query.setParameter("loginid", user.getLoginId());
-		query.setParameter("pwd", user.getPassword());
-		query.setParameter("role", user.getRole());
+		TypedQuery<Users> query=entityManager.createQuery("Select user from Users user where user.loginId=:ploginid and user.password=:ppwd and role=:prole", Users.class);
+		System.out.println(user.getLoginId()+""+user.getPassword()+""+user.getRole());
+		query.setParameter("ploginid", user.getLoginId());
+		query.setParameter("ppwd", user.getPassword());
+		query.setParameter("prole", user.getRole());
 		List<Users> userList=query.getResultList();
 		return userList.isEmpty();
 	}
