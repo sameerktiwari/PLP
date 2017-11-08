@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import com.cg.uas.entities.Application;
 import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
@@ -33,6 +34,7 @@ public class DAOImpl implements IDAO{
 	}
 	
 
+	@Override
 	public List<ProgramsScheduled> viewProgrammes(){
 		TypedQuery<ProgramsScheduled> query=entityManager.createQuery("Select programs from ProgramsScheduled programs", ProgramsScheduled.class);
 		return query.getResultList();
@@ -60,4 +62,13 @@ public class DAOImpl implements IDAO{
 		return app.status;
 		
 	}
+	
+	@Override
+	public Application save(Application app) {
+
+		entityManager.persist(app);
+		entityManager.flush();	//required to reflect changes on database
+		
+		return app;
+}
 }
