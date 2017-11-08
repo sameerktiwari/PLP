@@ -46,8 +46,6 @@ public class DAOImpl implements IDAO{
 		String qStr = "SELECT e FROM ProgramsOffered e WHERE e.programName='"+pname+"'";
 		TypedQuery<ProgramsOffered> query = entityManager.createQuery(qStr, ProgramsOffered.class);
 		ProgramsOffered programs = query.getSingleResult();
-		 
-		
 		return programs;
 		
 	}
@@ -59,8 +57,6 @@ public class DAOImpl implements IDAO{
 		TypedQuery<Application> query = entityManager.createQuery(qStr, Application.class);
 		query.setParameter("pappid", appid);
 		Application app = query.getSingleResult();
-		 
-		
 		return app.status;
 		
 	}
