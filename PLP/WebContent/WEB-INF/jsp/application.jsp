@@ -10,46 +10,42 @@
 </head>
 <body>
 	<h2>Enter your Credential</h2>
-	<form:form action="validate.htm" method="post"
+	<form:form action="add.htm" method="post"
 		modelAttribute="Application">
 		<table border="1">
 			<tr>
 				<td>Full name: </td>
-				<td><form:input path="fullName" pattern="[A-Za-z ]{2,}"/> <form:errors
+				<td><form:input path="fullName" pattern="[A-Za-z ]{2,}" required="required" title="Enter only alphabets"/> <form:errors
 						path="fullName" /></td>
 			</tr>
 			<tr>
 				<td>Date of Birth: </td>
-				<td><form:input path="dateOfBirth" /> <form:errors
+				<td><form:input path="dateOfBirth" required="required" title="Enter valid Date of Birth"/> <form:errors
 						path="dateOfBirth" /></td>
 			</tr>
 			<tr>
 				<td>Highest Qualification: </td>
-				<td><form:input path="highestQualification" /> <form:errors
+				<td><form:input path="highestQualification" required="required"/> <form:errors
 						path="highestQualification" /></td>
 			</tr>
 			<tr>
 				<td>Marks Obtained: </td>
-				<td><form:input path="marksObtained" min="0" max="100"/> <form:errors
+				<td><form:input path="marksObtained" minValue="0" maxValue="100" required="required" title="Enter marks between 0 and 100"/> <form:errors
 						path="marksObtained" /></td>
 			</tr>
 			<tr>
 				<td>Email: </td>
-				<td><form:input path="email" /> <form:errors path="email" /></td>
+				<td><form:input path="email" pattern="[A-Za-z0-9_.]{1,}[@][A-Za-z]{1,}[.]{1}[A-Za-z]{3}" required="required" title="Enter valid Emailid"/> <form:errors path="email" /></td>
 			</tr>
 			<tr>
 				<td>Goals: </td>
-				<td><form:input path="goals" /> <form:errors path="goals" /></td>
+				<td><form:input path="goals" required="required"/> <form:errors path="goals"/></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Submit Details"></td>
 			</tr>
 		</table>
-<<<<<<< HEAD
-		<form:hidden path="scheduledProgramId" value="${pid}" />
-=======
 		<form:hidden path="scheduledProgramId" value="${pId}" />
->>>>>>> 9ecf23d03f2a69d747d2758f35a3c68670b17ac3
 		<!-- msg = scheduledProgramId passed as ModelandView attribute -->
 	</form:form>
 

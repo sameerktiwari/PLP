@@ -1,4 +1,5 @@
 package com.cg.uas.entities;
+
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -8,46 +9,62 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.Email;
 
 /**
- * @author GroupNo. 5
- * Application by a participant for a
- * scheduled program available by the university/
- * Every attribute needed for the application will be present here
- * and depending on the progress of the Application they will
- * get updated.
+ * @author GroupNo. 5 Application by a participant for a scheduled program
+ *         available by the university/ Every attribute needed for the
+ *         application will be present here and depending on the progress of the
+ *         Application they will get updated.
  *
  */
 @Entity
-@Table(name="application")
-public class Application implements Serializable{
-	
+@Table(name = "application")
+public class Application implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@Column(name="application_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "application_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int applicationId;
-	@Column(name="full_name")
+
+	@Column(name = "full_name")
 	private String fullName;
-	@Column(name="date_of_birth")
+
+	@Column(name = "date_of_birth")
 	private String dateOfBirth;
-	@Column(name="highest_Qualification")
+
+	@Column(name = "highest_Qualification")
 	private String highestQualification;
-	@Column(name="marks_Obtained")
-	private int marksObtained;
-	@Column(name="email")
-	private String email;
-	@Column(name="goals")
-	private String goals;
-	@Column(name="scheduled_Program_Id")
-	private String scheduledProgramId;
-	@Column(name="status")
-	public String status;
-	@Column(name="date_of_interview")
-	public Date dateOfInterview;
 	
+	@Column(name = "marks_Obtained")
+	@Min(value = 0, message = "Must be greater than or equal to 0")
+	@Max(value = 100, message = "Must be smaller than or equal to 0")
+	private int marksObtained;
+	
+	@Email
+	@Column(name = "email")
+	private String email;
+	
+	@Column(name = "goals")
+	private String goals;
+	
+	@Column(name = "scheduled_Program_Id")
+	private String scheduledProgramId;
+	
+	@Column(name = "status")
+	public String status;
+	
+	@Future
+	@Column(name = "date_of_interview")
+	public Date dateOfInterview;
+
 	public String getStatus() {
 		return status;
 	}
@@ -100,9 +117,9 @@ public class Application implements Serializable{
 		this.dateOfInterview = dateOfInterview;
 	}
 
-	public Application(String fullName,String dateOfBirth,
-			String highestQualification, int marksObtained,String goals, String email,
-			String scheduledProgramId){
+	public Application(String fullName, String dateOfBirth,
+			String highestQualification, int marksObtained, String goals,
+			String email, String scheduledProgramId) {
 		this.fullName = fullName;
 		this.dateOfBirth = dateOfBirth;
 		this.highestQualification = highestQualification;
@@ -111,11 +128,11 @@ public class Application implements Serializable{
 		this.goals = goals;
 		this.scheduledProgramId = scheduledProgramId;
 	}
-	
-	public Application(int applicationId,String fullName,String dateOfBirth,
-			String highestQualification, int marksObtained,String goals, String email,
-			String scheduledProgramId){
-		this.applicationId=applicationId;
+
+	public Application(int applicationId, String fullName, String dateOfBirth,
+			String highestQualification, int marksObtained, String goals,
+			String email, String scheduledProgramId) {
+		this.applicationId = applicationId;
 		this.fullName = fullName;
 		this.dateOfBirth = dateOfBirth;
 		this.highestQualification = highestQualification;
@@ -124,11 +141,12 @@ public class Application implements Serializable{
 		this.goals = goals;
 		this.scheduledProgramId = scheduledProgramId;
 	}
-	
-	public Application(){
+
+	public Application() {
 	}
+
 	/**/
-	
+
 	public String getFullName() {
 		return fullName;
 	}
@@ -157,7 +175,7 @@ public class Application implements Serializable{
 		return scheduledProgramId;
 	}
 
-	public int genId(){
+	public int genId() {
 		return applicationId;
 	}
 
@@ -171,8 +189,5 @@ public class Application implements Serializable{
 				+ scheduledProgramId + ", status=" + status
 				+ ", dateOfInterview=" + dateOfInterview + "]";
 	}
-	
-	
-	
-	
+
 }

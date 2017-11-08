@@ -2,6 +2,8 @@ package com.cg.uas.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,6 +84,13 @@ public class UASController {
 		Application app=new Application();
 		model.addAttribute("pId", pId);
 		model.addAttribute("Application",app);
+		return "application";
+	}
+	
+	@RequestMapping(value="/add",method=RequestMethod.POST)
+	public String add(@ModelAttribute("Application") @Valid Application app,Model model,BindingResult result)
+	{
+		System.out.println(app);
 		return "application";
 	}
 }
