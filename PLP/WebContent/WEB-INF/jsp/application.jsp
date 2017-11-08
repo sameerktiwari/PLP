@@ -15,7 +15,7 @@
 		<table border="1">
 			<tr>
 				<td>Full name: </td>
-				<td><form:input path="fullName" /> <form:errors
+				<td><form:input path="fullName" pattern="[A-Za-z ]{2,}"/> <form:errors
 						path="fullName" /></td>
 			</tr>
 			<tr>
@@ -30,7 +30,7 @@
 			</tr>
 			<tr>
 				<td>Marks Obtained: </td>
-				<td><form:input path="marksObtained" /> <form:errors
+				<td><form:input path="marksObtained" min="0" max="100"/> <form:errors
 						path="marksObtained" /></td>
 			</tr>
 			<tr>
