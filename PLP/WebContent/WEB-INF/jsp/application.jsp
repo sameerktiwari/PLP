@@ -14,38 +14,38 @@
 		modelAttribute="Application">
 		<table border="1">
 			<tr>
-				<td>Full name:</td>
+				<td>Full name: </td>
 				<td><form:input path="fullName" /> <form:errors
 						path="fullName" /></td>
 			</tr>
 			<tr>
-				<td>dateOfBirth:</td>
+				<td>Date of Birth: </td>
 				<td><form:input path="dateOfBirth" /> <form:errors
 						path="dateOfBirth" /></td>
 			</tr>
 			<tr>
-				<td>highestQualification:</td>
+				<td>Highest Qualification: </td>
 				<td><form:input path="highestQualification" /> <form:errors
 						path="highestQualification" /></td>
 			</tr>
 			<tr>
-				<td>marksObtained:</td>
+				<td>Marks Obtained: </td>
 				<td><form:input path="marksObtained" /> <form:errors
 						path="marksObtained" /></td>
 			</tr>
 			<tr>
-				<td>email:</td>
+				<td>Email: </td>
 				<td><form:input path="email" /> <form:errors path="email" /></td>
 			</tr>
 			<tr>
-				<td>goals:</td>
+				<td>Goals: </td>
 				<td><form:input path="goals" /> <form:errors path="goals" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Submit Details"></td>
 			</tr>
 		</table>
-		<form:hidden path="scheduledProgramId" value="${msg}" />
+		<form:hidden path="scheduledProgramId" value="${pId}" />
 		<!-- msg = scheduledProgramId passed as ModelandView attribute -->
 	</form:form>
 
