@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cg.uas.dao.DAOImpl;
+import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
 import com.cg.uas.service.IService;
@@ -64,10 +65,12 @@ public class UASController {
 		return "viewProgram";
 	}
 	
-	@RequestMapping(value="/programDetails",method=RequestMethod.POST)
-	public String apply(@RequestParam("pName") String pName,Model model)
+	@RequestMapping(value="/programDetails",method=RequestMethod.GET)
+	public String programDetails(@RequestParam("pName") String pName,@RequestParam("pId") String pId,Model model)
 	{
-		
-		return "viewProgram";
+		List<ProgramsOffered> pos=service.getProgramsOffered(pName);
+		model.addAttribute("pList",pos);
+		model.addAttribute("pId", pId);
+		return "programDetails";
 	}
 }

@@ -28,7 +28,7 @@
 							value="${prog.scheduledProgrammeId}" />
 						${prog.scheduledProgrammeId}</td>
 					<td><form:hidden path="programName"
-							value="${prog.programName}" /><a href="programDetails?pName=${prog.programName}&pId=${prog.scheduledProgrammeId}">${prog.programName}</a></td>
+							value="${prog.programName}" /><a href="programDetails.htm?pName=${prog.programName}&pId=${prog.scheduledProgrammeId}">${prog.programName}</a></td>
 					<td><form:hidden path="location" value="${prog.location}" />${prog.location}</td>
 					<td><form:hidden path="startDate" value="${prog.startDate}" />${prog.startDate}</td>
 					<td><form:hidden path="endDate" value="${prog.endDate}" />${prog.endDate}</td>
