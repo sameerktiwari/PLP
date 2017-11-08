@@ -9,6 +9,8 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cg.uas.entities.Application;
+import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
 
@@ -30,12 +32,36 @@ public class DAOImpl implements IDAO{
 		return userList.isEmpty();
 	}
 	
-<<<<<<< HEAD
-	
-=======
+
 	public List<ProgramsScheduled> viewProgrammes(){
 		TypedQuery<ProgramsScheduled> query=entityManager.createQuery("Select programs from ProgramsScheduled programs", ProgramsScheduled.class);
 		return query.getResultList();
 	}
->>>>>>> 99ad5840bcb1d51abab1f4106180eb633823c8cd
+
+
+	
+	@Override
+	public ProgramsOffered getProgramsOffered(String pname){
+		
+		String qStr = "SELECT e FROM ProgramsOffered e WHERE e.programName='"+pname+"'";
+		TypedQuery<ProgramsOffered> query = entityManager.createQuery(qStr, ProgramsOffered.class);
+		ProgramsOffered programs = query.getSingleResult();
+		 
+		
+		return programs;
+		
+	}
+	
+	@Override
+	public String getStatus(int  appid){
+		
+		String qStr = "SELECT e FROM Application e WHERE e.applicationId=:pappid";
+		TypedQuery<Application> query = entityManager.createQuery(qStr, Application.class);
+		query.setParameter("pappid", appid);
+		Application app = query.getSingleResult();
+		 
+		
+		return app.status;
+		
+	}
 }

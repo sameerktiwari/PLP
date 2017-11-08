@@ -69,7 +69,7 @@ public class UASController {
 	@RequestMapping(value="/programDetails",method=RequestMethod.GET)
 	public String programDetails(@RequestParam("pName") String pName,@RequestParam("pId") String pId,Model model)
 	{
-		List<ProgramsOffered> pos=service.getProgramsOffered(pName);
+		ProgramsOffered pos=service.getProgramsOffered(pName);
 		model.addAttribute("pList",pos);
 		model.addAttribute("pId", pId);
 		return "programDetails";

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.cg.uas.dao.DAOImpl;
 import com.cg.uas.dao.IDAO;
+import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
 
@@ -23,5 +24,15 @@ public class ServiceImpl implements IService{
 	@Override
 	public List<ProgramsScheduled> viewProgrammes(){
 		return dao.viewProgrammes();
+	}
+
+	@Override
+	public ProgramsOffered getProgramsOffered(String pname) {
+		return dao.getProgramsOffered(pname);
+	}
+
+	@Override
+	public String getStatus(int appid) {
+	return dao.getStatus(appid);
 	}
 }
