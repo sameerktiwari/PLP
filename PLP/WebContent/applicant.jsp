@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home</title>
+<title>Applicant</title>
 </head>
 <body>
-<h2>Welcome to University Admission System</h2>
-<h3>Login as</h3>
-<h4><a href="applicant.htm">Applicant</a></h4>
-<h4><a href="login.htm?role=mac">MAC</a></h4>
-<h4><a href="login.htm?role=admin">Admin</a></h4>
+
 </body>
 </html>

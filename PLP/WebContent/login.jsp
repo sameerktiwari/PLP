@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Page</title>
 </head>
 <body>
 <h2>Enter your LoginId and Password</h2>
-<form:form action="login.htm" method="post" modelAttribute="users">
+<form:form action="validate.htm" method="post" modelAttribute="users">
 <table>
 			<tr>
 				<td>LoginId:</td>
@@ -18,7 +18,10 @@
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td><form:input path="pwd" /> <form:errors path="pwd" /></td>
+				<td><form:input path="password" /> <form:errors path="password" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Login"></td>
 			</tr>
 </table>			
 </form:form>
