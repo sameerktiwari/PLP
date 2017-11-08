@@ -14,9 +14,9 @@
 		<tr>
 			<th>Program Name</th>
 			<th>Description</th>
-			<th>applicantEligibilty</th>
-			<th>duration</th>
-			<th>degree</th>
+			<th>Applicant Eligibilty</th>
+			<th>Duration</th>
+			<th>Degree</th>
 		</tr>
 		<c:if test="${prog ne null}">
 			<tr>
@@ -25,7 +25,9 @@
 				<td>${prog.applicantEligibilty}</td>
 				<td>${prog.duration}</td>
 				<td>${prog.degree}</td>
-				<td>${prog.sessionsPerWeek}</td>
+			</tr>
+			<tr>
+				<td colspan="5"><a href="apply.htm?pId=${pId}"><button>Apply here</button></a></td>
 			</tr>
 		</c:if>
 
