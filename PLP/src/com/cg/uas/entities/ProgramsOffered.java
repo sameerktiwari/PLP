@@ -1,5 +1,7 @@
 package com.cg.uas.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,8 +17,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="Programs_Offered")
-public class ProgramsOffered 
+public class ProgramsOffered implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="programName")
 	protected String programName;

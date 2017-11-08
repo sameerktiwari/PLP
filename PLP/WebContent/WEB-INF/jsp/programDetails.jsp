@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Apply Here</title>
+<title>Program Details</title>
 </head>
 <body>
-<h2>University Admission System - Application Form</h2>
+
 </body>
 </html>

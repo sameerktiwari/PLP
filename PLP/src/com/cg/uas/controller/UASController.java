@@ -64,13 +64,10 @@ public class UASController {
 		return "viewProgram";
 	}
 	
-	@RequestMapping(value="/applyProgram",method=RequestMethod.POST)
-	public String apply(Model model,@ModelAttribute("ProgramsScheduled") ProgramsScheduled ps,BindingResult result)
+	@RequestMapping(value="/programDetails",method=RequestMethod.POST)
+	public String apply(@RequestParam("pName") String pName,Model model)
 	{
-		List<ProgramsScheduled> pList=service.viewProgrammes();
-		model.addAttribute("programList",pList);
-		ProgramsScheduled programs=new ProgramsScheduled();
-		model.addAttribute("ProgramsScheduled",programs);
+		
 		return "viewProgram";
 	}
 }
