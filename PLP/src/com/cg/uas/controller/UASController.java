@@ -2,6 +2,7 @@ package com.cg.uas.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,10 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cg.uas.dao.DAOImpl;
 import com.cg.uas.entities.Users;
+import com.cg.uas.service.IService;
+import com.cg.uas.service.ServiceImpl;
 
 @Controller
 public class UASController {
-	private DAOImpl dao=new DAOImpl();
+	@Autowired
+	private IService service;
 	
 	@RequestMapping("/login")
 	public String login(@RequestParam("role") String role,Model model)
@@ -33,7 +37,13 @@ public class UASController {
 			return "login";
 		}
 		else{
-			
+			if(!service.validate(users)){
+				return users.getRole();
+			}
+			else{
+				model.addAttribute("msg","Invalid Username or Password");
+				return "error";
+			}
 		}
 		return null;
 	}
