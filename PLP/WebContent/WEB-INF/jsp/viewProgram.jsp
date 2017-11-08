@@ -21,7 +21,7 @@
 		</tr>
 
 		<c:forEach items="${programList}" var="prog">
-			<form:form action="viewProgram.htm" method="post"
+			<form:form action="applyProgram.htm" method="post"
 				modelAttribute="ProgramsScheduled">
 				<tr>
 					<td><form:hidden path="scheduledProgrammeId"

@@ -58,7 +58,19 @@ public class UASController {
 	public String viewprgrms(Model model)
 	{
 		List<ProgramsScheduled> pList=service.viewProgrammes();
-		model.addAttribute("pList",pList);
-		return "applicant";
+		model.addAttribute("programList",pList);
+		ProgramsScheduled programs=new ProgramsScheduled();
+		model.addAttribute("ProgramsScheduled",programs);
+		return "viewProgram";
+	}
+	
+	@RequestMapping(value="/applyProgram",method=RequestMethod.POST)
+	public String apply(Model model,@ModelAttribute("ProgramsScheduled") ProgramsScheduled ps,BindingResult result)
+	{
+		List<ProgramsScheduled> pList=service.viewProgrammes();
+		model.addAttribute("programList",pList);
+		ProgramsScheduled programs=new ProgramsScheduled();
+		model.addAttribute("ProgramsScheduled",programs);
+		return "viewProgram";
 	}
 }
