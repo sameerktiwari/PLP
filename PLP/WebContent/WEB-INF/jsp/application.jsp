@@ -45,7 +45,11 @@
 				<td colspan="2"><input type="submit" value="Submit Details"></td>
 			</tr>
 		</table>
+<<<<<<< HEAD
+		<form:hidden path="scheduledProgramId" value="${pid}" />
+=======
 		<form:hidden path="scheduledProgramId" value="${pId}" />
+>>>>>>> 9ecf23d03f2a69d747d2758f35a3c68670b17ac3
 		<!-- msg = scheduledProgramId passed as ModelandView attribute -->
 	</form:form>
 
