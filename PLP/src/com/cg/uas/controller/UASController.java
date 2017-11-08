@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cg.uas.dao.DAOImpl;
+import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
 import com.cg.uas.service.IService;
 import com.cg.uas.service.ServiceImpl;
@@ -45,5 +46,19 @@ public class UASController {
 				return "error";
 			}
 		}
+	}
+	
+	@RequestMapping("/applicant")
+	public String applicant(Model model)
+	{
+		return "applicant";
+	}
+	
+	@RequestMapping("/viewprgrms")
+	public String viewprgrms(Model model)
+	{
+		List<ProgramsScheduled> pList=service.viewProgrammes();
+		model.addAttribute("pList",pList);
+		return "applicant";
 	}
 }
