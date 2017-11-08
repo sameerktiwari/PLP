@@ -27,11 +27,13 @@
 					<td><form:hidden path="scheduledProgrammeId"
 							value="${prog.scheduledProgrammeId}" />
 						${prog.scheduledProgrammeId}</td>
-					<td><form:hidden path="programName" value="${prog.programName}" />${prog.programName}</td>
+					<td><form:hidden path="programName"
+							value="${prog.programName}" />${prog.programName}</td>
 					<td><form:hidden path="location" value="${prog.location}" />${prog.location}</td>
 					<td><form:hidden path="startDate" value="${prog.startDate}" />${prog.startDate}</td>
 					<td><form:hidden path="endDate" value="${prog.endDate}" />${prog.endDate}</td>
-					<td><form:hidden path="sessionsPerWeek" value="${prog.sessionsPerWeek}" />${prog.sessionsPerWeek}</td>
+					<td><form:hidden path="sessionsPerWeek"
+							value="${prog.sessionsPerWeek}" />${prog.sessionsPerWeek}</td>
 					<td><input type="submit" value="Apply"></td>
 				</tr>
 			</form:form>
