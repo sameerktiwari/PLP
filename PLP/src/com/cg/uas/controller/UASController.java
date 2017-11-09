@@ -102,4 +102,18 @@ public class UASController {
 		}
 		
 	}
+	
+	@RequestMapping("/viewstatus")
+	public String viewstatus()
+	{
+		return "viewStatus";
+	}
+	
+	@RequestMapping("/getStatus")
+	public String getStatus(@RequestParam("appId") String appId,Model model)
+	{	
+		Application app=service.getStatus(Integer.parseInt(appId));
+		model.addAttribute("applicant",app);
+		return "viewStatus";
+	}
 }

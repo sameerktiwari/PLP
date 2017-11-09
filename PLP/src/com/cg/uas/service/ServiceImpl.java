@@ -33,7 +33,7 @@ public class ServiceImpl implements IService{
 	}
 
 	@Override
-	public String getStatus(int appid) {
+	public Application getStatus(int appid) {
 	return dao.getStatus(appid);
 	}
 

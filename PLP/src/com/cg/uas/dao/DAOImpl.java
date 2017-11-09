@@ -53,13 +53,13 @@ public class DAOImpl implements IDAO{
 	}
 	
 	@Override
-	public String getStatus(int  appid){
+	public Application getStatus(int  appid){
 		
 		String qStr = "SELECT e FROM Application e WHERE e.applicationId=:pappid";
 		TypedQuery<Application> query = entityManager.createQuery(qStr, Application.class);
 		query.setParameter("pappid", appid);
 		Application app = query.getSingleResult();
-		return app.status;
+		return app;
 		
 	}
 	

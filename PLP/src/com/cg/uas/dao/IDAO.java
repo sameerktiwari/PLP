@@ -12,6 +12,6 @@ public interface IDAO {
 	public boolean validate(Users user);
 	public List<ProgramsScheduled> viewProgrammes();
 	public ProgramsOffered getProgramsOffered(String pname);
-	public String getStatus(int appid);
+	public Application getStatus(int appid);
 	public Application save(Application app);
 }
