@@ -13,13 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.cg.uas.dao.DAOImpl;
 import com.cg.uas.entities.Application;
 import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
 import com.cg.uas.service.IService;
-import com.cg.uas.service.ServiceImpl;
 
 @Controller
 public class UASController {
@@ -78,7 +76,7 @@ public class UASController {
 		return "programDetail";
 	}
 	
-	@RequestMapping(value="/apply",method=RequestMethod.GET)
+	@RequestMapping("/apply")
 	public String apply(@RequestParam("pId") String pId,Model model)
 	{
 		Application app=new Application();
@@ -88,7 +86,7 @@ public class UASController {
 	}
 	
 	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public String add(@ModelAttribute("Application") @Valid Application app,Model model,BindingResult result)
+	public String add(@ModelAttribute("Application") @Valid Application app,BindingResult result,Model model)
 	{
 		if(result.hasErrors()){
 			model.addAttribute("Application",app);

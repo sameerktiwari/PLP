@@ -21,7 +21,7 @@
 			</tr>
 			<tr>
 				<td>Date of Birth: </td>
-				<td><form:input path="dateOfBirth" required="required" title="Enter valid Date of Birth"/> <form:errors
+				<td><form:input path="dateOfBirth" required="required" placeholder="yyyy-mm-dd" title="Enter valid Date of Birth"/> <form:errors
 						path="dateOfBirth" /></td>
 			</tr>
 			<tr>
