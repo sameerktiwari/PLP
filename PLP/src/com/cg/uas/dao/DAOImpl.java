@@ -23,6 +23,9 @@ public class DAOImpl implements IDAO{
 	@PersistenceContext
 	EntityManager entityManager;
 	
+	/* (non-Javadoc)
+	 * @see com.cg.uas.dao.IDAO#validate(com.cg.uas.entities.Users)
+	 */
 	@Override
 	public boolean validate(Users user){
 		TypedQuery<Users> query=entityManager.createQuery("Select user from Users user where user.loginId=:ploginid and user.password=:ppwd and role=:prole", Users.class);
@@ -34,6 +37,9 @@ public class DAOImpl implements IDAO{
 	}
 	
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.dao.IDAO#viewProgrammes()
+	 */
 	@Override
 	public List<ProgramsScheduled> viewProgrammes(){
 		TypedQuery<ProgramsScheduled> query=entityManager.createQuery("Select programs from ProgramsScheduled programs", ProgramsScheduled.class);
@@ -42,6 +48,9 @@ public class DAOImpl implements IDAO{
 
 
 	
+	/* (non-Javadoc)
+	 * @see com.cg.uas.dao.IDAO#getProgramsOffered(java.lang.String)
+	 */
 	@Override
 	public ProgramsOffered getProgramsOffered(String pname){
 		

@@ -17,26 +17,41 @@ public class ServiceImpl implements IService{
 	@Autowired
 	IDAO dao;
 	
+	/* (non-Javadoc)
+	 * @see com.cg.uas.service.IService#validate(com.cg.uas.entities.Users)
+	 */
 	@Override
 	public boolean validate(Users user){
 		return dao.validate(user);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.cg.uas.service.IService#viewProgrammes()
+	 */
 	@Override
 	public List<ProgramsScheduled> viewProgrammes(){
 		return dao.viewProgrammes();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.service.IService#getProgramsOffered(java.lang.String)
+	 */
 	@Override
 	public ProgramsOffered getProgramsOffered(String pname) {
 		return dao.getProgramsOffered(pname);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.service.IService#getStatus(int)
+	 */
 	@Override
 	public Application getStatus(int appid) {
 	return dao.getStatus(appid);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.service.IService#save(com.cg.uas.entities.Application)
+	 */
 	@Override
 	public Application save(Application app) {
 		
