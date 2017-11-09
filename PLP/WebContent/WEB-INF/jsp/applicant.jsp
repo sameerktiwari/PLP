@@ -10,5 +10,6 @@
 <h2>University Admission System- Applicant</h2>
 <h4><a href="viewprgrms.htm">View Programmes</a></h4>
 <h4><a href="viewstatus.htm">View Status</a></h4>
+<h3><a href="index.jsp">Home</a></h3>
 </body>
 </html>

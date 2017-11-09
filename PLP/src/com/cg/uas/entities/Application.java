@@ -13,6 +13,7 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -35,8 +36,10 @@ public class Application implements Serializable {
 	public int applicationId;
 
 	@Column(name = "full_name")
+	@Pattern(regexp="[A-Za-z ]{2,}",message=" Enter only alphabets")
 	private String fullName;
 
+	@Past(message = " Must be a date in the past")
 	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
 
@@ -44,8 +47,8 @@ public class Application implements Serializable {
 	private String highestQualification;
 	
 	@Column(name = "marks_Obtained")
-	@Min(value = 0, message = "Must be greater than or equal to 0")
-	@Max(value = 100, message = "Must be smaller than or equal to 0")
+	@Min(value = 0, message = " Must be greater than or equal to 0")
+	@Max(value = 100, message = " Must be smaller than or equal to 100")
 	private int marksObtained;
 	
 	@Email
@@ -61,7 +64,7 @@ public class Application implements Serializable {
 	@Column(name = "status")
 	public String status;
 	
-	@Future
+	@Future(message = " Must be a future date")
 	@Column(name = "date_of_interview")
 	public Date dateOfInterview;
 
