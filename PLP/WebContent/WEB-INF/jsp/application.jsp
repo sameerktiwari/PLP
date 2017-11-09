@@ -49,6 +49,6 @@
 		<form:hidden path="scheduledProgramId" value="${pId}" />
 		<!-- msg = scheduledProgramId passed as ModelandView attribute -->
 	</form:form>
-
+<h3><a href="index.jsp">Home</a></h3>
 </body>
 </html>

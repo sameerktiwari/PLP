@@ -32,5 +32,6 @@
 		</c:if>
 
 	</table>
+<h3><a href="index.jsp">Home</a></h3>	
 </body>
 </html>
