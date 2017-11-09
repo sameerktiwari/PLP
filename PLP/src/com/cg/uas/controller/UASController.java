@@ -116,4 +116,25 @@ public class UASController {
 		model.addAttribute("applicant",app);
 		return "viewStatus";
 	}
+	
+	@RequestMapping("/viewapps")
+	public String viewapps(Model model)
+	{
+		List<ProgramsScheduled> pList=service.viewProgrammes();
+		model.addAttribute("programList",pList);
+		ProgramsScheduled programs=new ProgramsScheduled();
+		model.addAttribute("ProgramsScheduled",programs);
+		return "viewProgramForMAC";
+	}
+	
+	@RequestMapping("/viewApplication")
+	public String viewapplications(Model model,@ModelAttribute("ProgramsScheduled") ProgramsScheduled ps,BindingResult result)
+	{
+		
+		List<Application> appList=service.getApplicant(ps.getScheduledProgrammeId());
+		model.addAttribute("appList",appList);
+		Application app=new Application();
+		model.addAttribute("Application", app);
+		return "viewApplications";
+	}
 }

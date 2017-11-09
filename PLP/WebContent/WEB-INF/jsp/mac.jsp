@@ -7,6 +7,10 @@
 <title>MAC</title>
 </head>
 <body>
+<h2>University Admission System - Member of Admission Committee</h2>
+<h4><a href="viewapps.htm">View Applications</a></h4>
+<h4><a href="accept.htm">Accept an application</a></h4>
+<h4><a href="confirm.htm">Confirm an application</a></h4>
 <h3><a href="index.jsp">Home</a></h3>
 </body>
 </html>

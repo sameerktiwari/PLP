@@ -22,10 +22,15 @@
 		</tr>
 
 		<c:forEach items="${programList}" var="prog">
+<<<<<<< HEAD
 
 			<form:form action="apply.htm?pId=${prog.scheduledProgrammeId}"
 				method="post" modelAttribute="ProgramsScheduled">
 
+=======
+			<form:form action="apply.htm?pId=${prog.scheduledProgrammeId}"
+				method="post" modelAttribute="ProgramsScheduled">
+>>>>>>> 6f3254d903d753c1daac45e28d96b1405c1fc499
 				<tr>
 					<td><form:hidden path="scheduledProgrammeId"
 							value="${prog.scheduledProgrammeId}" />

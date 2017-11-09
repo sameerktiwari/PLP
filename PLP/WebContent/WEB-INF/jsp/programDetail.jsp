@@ -22,7 +22,7 @@
 			<tr>
 				<td>${prog.programName}</td>
 				<td>${prog.description}</td>
-				<td>${prog.applicantEligibilty}</td>
+				<td>${prog.applicantEligibility}</td>
 				<td>${prog.duration}</td>
 				<td>${prog.degree}</td>
 			</tr>
