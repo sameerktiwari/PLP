@@ -35,7 +35,11 @@
 					<td><form:hidden path="sessionsPerWeek"
 							value="${prog.sessionsPerWeek}" />${prog.sessionsPerWeek}</td>
 					<td><input type="submit" value="view Application"></td>
-					<c:if test="${appList ne null}">
+				</tr>
+			</form:form>
+		</c:forEach>
+	</table>
+	<c:if test="${appList ne null}">
 						<table border="2">
 							<tr>
 								<th>applicationId</th>
@@ -53,30 +57,26 @@
 									modelAttribute="Application">
 									<tr>
 										<td><form:hidden path="applicationId"
-												value="${appli.applicationId }" /> ${appli.applicationId }</td>
+												value="${appli.applicationId}" /> ${appli.applicationId}</td>
 										<td><form:hidden path="fullName"
-												value="${appli.fullName }" />${appli.fullName }</td>
+												value="${appli.fullName}" />${appli.fullName}</td>
 										<td><form:hidden path="dateOfBirth"
-												value="${appli.dateOfBirth }" />${appli.dateOfBirth }</td>
+												value="${appli.dateOfBirth}" />${appli.dateOfBirth}</td>
 										<td><form:hidden path="highestQualification"
-												value="${appli.highestQualification }" />${appli.highestQualification }</td>
+												value="${appli.highestQualification}" />${appli.highestQualification}</td>
 										<td><form:hidden path="marksObtained"
-												value="${appli.marksObtained }" />${appli.marksObtained }</td>
-										<td><form:hidden path="email" value="${appli.email }" />${appli.email }</td>
-										<td><form:hidden path="goals" value="${appli.goals }" />${appli.goals }</td>
-										<td><form:hidden path="status" value="${appli.status }" />${appli.status }</td>
+												value="${appli.marksObtained}" />${appli.marksObtained}</td>
+										<td><form:hidden path="email" value="${appli.email}" />${appli.email}</td>
+										<td><form:hidden path="goals" value="${appli.goals}" />${appli.goals}</td>
+										<td><form:hidden path="scheduledProgramId" value="${appli.scheduledProgramId}" />${appli.scheduledProgramId}</td>
+										<td><form:hidden path="status" value="${appli.status}" />${appli.status}</td>
 										<td><form:hidden path="dateOfInterview"
-												value="${appli.dateOfInterview }" />${appli.dateOfInterview }</td>
+												value="${appli.dateOfInterview}" />${appli.dateOfInterview}</td>
 										<td><input type="submit" value="Schedule Interview"></td>
 									</tr>
 								</form:form>
 							</c:forEach>
 						</table>
 					</c:if>
-				</tr>
-			</form:form>
-		</c:forEach>
-
-	</table>
 </body>
 </html>

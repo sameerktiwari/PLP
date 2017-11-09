@@ -130,8 +130,11 @@ public class UASController {
 	@RequestMapping("/viewApplication")
 	public String viewapplications(Model model,@ModelAttribute("ProgramsScheduled") ProgramsScheduled ps,BindingResult result)
 	{
-		List<ProgramsScheduled> pList=service.viewProgrammes();
-		model.addAttribute("programList",pList);
-		return "viewProgramForMAC";
+		
+		List<Application> appList=service.getApplicant(ps.getScheduledProgrammeId());
+		model.addAttribute("appList",appList);
+		Application app=new Application();
+		model.addAttribute("Application", app);
+		return "viewApplications";
 	}
 }
