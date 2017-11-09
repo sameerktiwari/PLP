@@ -1,15 +1,11 @@
 package com.cg.uas.dao;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-
 import com.cg.uas.entities.Application;
 import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
@@ -92,6 +88,14 @@ public class DAOImpl implements IDAO{
 		List<Application> app = query.getResultList();
 		return app;
 }
+	
+	@Override
+	public Application modify(Application application) {
+		application = entityManager.merge(application);
+		entityManager.flush();	//required to reflect changes on database
+		
+		return application;
+	}
 	
 	
 }

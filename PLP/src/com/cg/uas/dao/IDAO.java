@@ -35,4 +35,6 @@ public interface IDAO {
 	 */
 	public Application save(Application app);
 	public List<Application> getApplicant(String programId);
+
+	public Application modify(Application application);
 }

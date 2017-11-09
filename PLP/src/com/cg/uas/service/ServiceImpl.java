@@ -63,4 +63,10 @@ public class ServiceImpl implements IService{
 	
 		return dao.getApplicant(programId);
 	}
+
+	@Override
+	public Application modify(Application application) {
+		
+		return dao.modify(application);
+	}
 }
