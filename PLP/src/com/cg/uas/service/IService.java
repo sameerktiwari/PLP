@@ -14,4 +14,5 @@ public interface IService {
 	public ProgramsOffered getProgramsOffered(String pname);
 	public Application getStatus(int appid);
 	public Application save(Application app);
+	public List<Application> getApplicant(String programId);
 }
