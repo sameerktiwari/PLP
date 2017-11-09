@@ -90,7 +90,16 @@ public class UASController {
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String add(@ModelAttribute("Application") @Valid Application app,Model model,BindingResult result)
 	{
-		System.out.println(app);
-		return "application";
+		if(result.hasErrors()){
+			model.addAttribute("Application",app);
+			return "application";
+		}
+		else{
+			Application ap=service.save(app);
+			System.out.println(ap);
+			model.addAttribute("applicant",ap);
+			return "success";
+		}
+		
 	}
 }

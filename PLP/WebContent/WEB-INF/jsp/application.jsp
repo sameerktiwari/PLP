@@ -9,7 +9,8 @@
 <title>Application</title>
 </head>
 <body>
-	<h2>Enter your Credential</h2>
+<h2>University Admission System</h2>
+	<h2>Enter your Credentials</h2>
 	<form:form action="add.htm" method="post"
 		modelAttribute="Application">
 		<table border="1">

@@ -38,7 +38,7 @@ public class Application implements Serializable {
 	private String fullName;
 
 	@Column(name = "date_of_birth")
-	private String dateOfBirth;
+	private Date dateOfBirth;
 
 	@Column(name = "highest_Qualification")
 	private String highestQualification;
@@ -77,7 +77,7 @@ public class Application implements Serializable {
 		this.fullName = fullName;
 	}
 
-	public void setDateOfBirth(String dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -117,7 +117,7 @@ public class Application implements Serializable {
 		this.dateOfInterview = dateOfInterview;
 	}
 
-	public Application(String fullName, String dateOfBirth,
+	public Application(String fullName, Date dateOfBirth,
 			String highestQualification, int marksObtained, String goals,
 			String email, String scheduledProgramId) {
 		this.fullName = fullName;
@@ -129,7 +129,7 @@ public class Application implements Serializable {
 		this.scheduledProgramId = scheduledProgramId;
 	}
 
-	public Application(int applicationId, String fullName, String dateOfBirth,
+	public Application(int applicationId, String fullName, Date dateOfBirth,
 			String highestQualification, int marksObtained, String goals,
 			String email, String scheduledProgramId) {
 		this.applicationId = applicationId;
@@ -151,7 +151,7 @@ public class Application implements Serializable {
 		return fullName;
 	}
 
-	public String getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
