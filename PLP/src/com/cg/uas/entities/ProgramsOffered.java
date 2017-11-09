@@ -28,8 +28,8 @@ public class ProgramsOffered implements Serializable
 	protected String programName;
 	@Column(name="description")
 	protected String description;
-	@Column(name="applicant_Eligibilty")
-	protected String applicantEligibilty;
+	@Column(name="applicant_Eligibility")
+	protected String applicantEligibility;
 	@Column(name="duration")
 	protected int duration;
 	@Column(name="degree_certificate_offered")
@@ -41,7 +41,7 @@ public class ProgramsOffered implements Serializable
 		super();
 		this.programName = programName;
 		this.description = description;
-		this.applicantEligibilty = applicantEligibilty;
+		this.applicantEligibility = applicantEligibility;
 		this.duration = duration;
 		this.degree = degree;
 	}
@@ -70,13 +70,13 @@ public class ProgramsOffered implements Serializable
 	}
 
 
-	public String getApplicantEligibilty() {
-		return applicantEligibilty;
+	public String getApplicantEligibility() {
+		return applicantEligibility;
 	}
 
 
-	public void setApplicantEligibilty(String applicantEligibilty) {
-		this.applicantEligibilty = applicantEligibilty;
+	public void setApplicantEligibility(String applicantEligibility) {
+		this.applicantEligibility = applicantEligibility;
 	}
 
 
@@ -103,7 +103,7 @@ public class ProgramsOffered implements Serializable
 	@Override
 	public String toString() {
 		return "ProgramsOffered [programName=" + programName + ", description="
-				+ description + ", applicantEligibilty=" + applicantEligibilty
+				+ description + ", applicantEligibilty=" + applicantEligibility
 				+ ", duration=" + duration + ", degree=" + degree + "]";
 	}
 	

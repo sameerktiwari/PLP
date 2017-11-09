@@ -34,4 +34,5 @@ public interface IDAO {
 	 * @return
 	 */
 	public Application save(Application app);
+	public List<Application> getApplicant(String programId);
 }

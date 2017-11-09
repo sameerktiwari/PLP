@@ -43,6 +43,7 @@ public class DAOImpl implements IDAO{
 	@Override
 	public List<ProgramsScheduled> viewProgrammes(){
 		TypedQuery<ProgramsScheduled> query=entityManager.createQuery("Select programs from ProgramsScheduled programs", ProgramsScheduled.class);
+		
 		return query.getResultList();
 	}
 
@@ -80,4 +81,17 @@ public class DAOImpl implements IDAO{
 		
 		return app;
 }
+	
+	@Override
+	public List<Application> getApplicant(String programId) {
+
+
+		String qStr = "SELECT e FROM Application e WHERE e.scheduledProgramId=:pappid";
+		TypedQuery<Application> query = entityManager.createQuery(qStr, Application.class);
+		query.setParameter("pappid", programId);
+		List<Application> app = query.getResultList();
+		return app;
+}
+	
+	
 }

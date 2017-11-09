@@ -60,8 +60,10 @@ public class UASController {
 	@RequestMapping("/viewprgrms")
 	public String viewprgrms(Model model)
 	{
+		
 		List<ProgramsScheduled> pList=service.viewProgrammes();
 		model.addAttribute("programList",pList);
+		System.out.println("in cont");
 		ProgramsScheduled programs=new ProgramsScheduled();
 		model.addAttribute("ProgramsScheduled",programs);
 		return "viewProgram";

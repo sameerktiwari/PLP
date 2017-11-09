@@ -57,4 +57,10 @@ public class ServiceImpl implements IService{
 		
 		return dao.save(app);
 	}
+
+	@Override
+	public List<Application> getApplicant(String programId) {
+	
+		return dao.getApplicant(programId);
+	}
 }
