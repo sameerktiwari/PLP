@@ -37,6 +37,7 @@ public class DAOImpl implements IDAO{
 	@Override
 	public List<ProgramsScheduled> viewProgrammes(){
 		TypedQuery<ProgramsScheduled> query=entityManager.createQuery("Select programs from ProgramsScheduled programs", ProgramsScheduled.class);
+		System.out.println(query.getResultList());
 		return query.getResultList();
 	}
 
