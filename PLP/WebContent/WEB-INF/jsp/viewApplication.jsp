@@ -37,9 +37,9 @@
 					<td></td>
 				</tr>
 				</table>
-	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=Accepted"><input type="button" value="Accept"></a>
-	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=Rejected"><input type="button" value="Reject"></a>
-	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=Confirmed"><input type="button" value="Confirm"></a>
+	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=Accepted"><input type="button" value="Accept" style="background-color:blue;color:white"></a>
+	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=Rejected"><input type="button" value="Reject" style="background-color:green;color:white"></a>
+	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=Confirmed"><input type="button" value="Confirm" style="background-color:red;color:white"></a>
 	<c:if test="${msg ne null}">"${msg}"</c:if>
 	<c:if test="${showDOI ne null}"><form action="setInterview.htm?appId=${applicant.applicationId}" method="post"><p>Enter Date of Interview: <input type="date" name="doi"><input type="submit" value="Schedule Interview"></p></form></c:if>
 <h3>
