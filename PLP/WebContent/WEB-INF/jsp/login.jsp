@@ -26,6 +26,8 @@
 </table>
 <form:hidden path="role" value="${users.role}"/>		
 </form:form>
-
+<h3>
+		<a href="index.jsp">Home</a>
+	</h3>
 </body>
 </html>

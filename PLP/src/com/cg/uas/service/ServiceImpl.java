@@ -1,5 +1,6 @@
 package com.cg.uas.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +67,10 @@ public class ServiceImpl implements IService{
 
 	@Override
 	public Application modify(Application application,String status) {
-		
 		return dao.modify(application,status);
+	}
+	@Override
+	public Application setInterview(Application application, Date dateOfInterview){
+		return dao.setInterview(application, dateOfInterview);
 	}
 }
