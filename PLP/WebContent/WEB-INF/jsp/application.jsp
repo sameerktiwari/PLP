@@ -41,6 +41,7 @@
 			<tr>
 				<td>Goals: </td>
 				<td><form:input path="goals" required="required"/> <form:errors path="goals"/></td>
+				<form:hidden path="status" value="Pending"/>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Submit Details"></td>

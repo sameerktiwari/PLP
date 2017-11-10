@@ -3,6 +3,7 @@ package com.cg.uas.entities;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.enterprise.inject.Default;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * @author GroupNo. 5 Application by a participant for a scheduled program

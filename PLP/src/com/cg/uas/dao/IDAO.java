@@ -1,5 +1,6 @@
 package com.cg.uas.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.cg.uas.entities.Application;
@@ -37,4 +38,6 @@ public interface IDAO {
 	public List<Application> getApplicant(String programId);
 
 	public Application modify(Application application,String status);
+
+	public Application setInterview(Application application, Date dateOfInterview);
 }

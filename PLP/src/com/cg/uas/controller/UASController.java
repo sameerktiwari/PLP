@@ -140,22 +140,55 @@ public class UASController {
 	}
 
 	@RequestMapping("/updateStatus")
-	public String updateStatus(@RequestParam("Application") Application app,BindingResult result,@RequestParam("btn") String status, Model model) {
-		if (("Accepted").equals(app.getStatus())) {
-			if (app.getDateOfInterview().before(Date.valueOf(LocalDate.now()))) {
-				app=service.modify(app, status+"ed");
+	public String updateStatus(@RequestParam("appId") int appId,@RequestParam("status") String status, Model model) {
+		Application app=service.getStatus(appId);
+		if (("Pending").equals(app.getStatus())){
+			if(("Accepted").equals(status)){
+			model.addAttribute("showDOI", "y");
+			model.addAttribute("applicant", app);
+			return "viewApplication";
+			}
+			else if(("Rejected").equals(status)){
+				app=service.modify(app, status);
+				model.addAttribute("msg","Application "+appId+" rejected");
 				model.addAttribute("applicant", app);
-				model.addAttribute("msg","Pending Interview Results");
+				return "viewApplication";
+			}
+			else {
+				model.addAttribute("msg","Not Applicable");
+				model.addAttribute("applicant", app);
+				return "viewApplication";
+			}
+		}
+		else if (("Accepted").equals(app.getStatus()) && (("Confirmed").equals(status))||("Rejected").equals(status)) {
+			if (app.getDateOfInterview().before(Date.valueOf(LocalDate.now()))) {
+				app=service.modify(app, status);
+				model.addAttribute("applicant", app);
+				model.addAttribute("msg","Applicant Confirmed");
+				model.addAttribute("applicant", app);
 				return "viewApplication";
 			}
 			else{
 				model.addAttribute("msg","Pending Interview Results");
+				model.addAttribute("applicant", app);
 				return "viewApplication";
 			}
 		}
-		else{
-			model.addAttribute("msg","A");
+		else {
+			model.addAttribute("msg","Not Applicable");
+			model.addAttribute("applicant", app);
 			return "viewApplication";
 		}
+	}
+	
+	@RequestMapping(value="/setInterview",method=RequestMethod.POST)
+	public String setInterview(@RequestParam("appId") int appId,@RequestParam("doi") Date doi, Model model) {
+		Application app=service.getStatus(appId);
+		app.setDateOfInterview(doi);
+		app=service.modify(app, "Accepted");
+		model.addAttribute("applicant", app);
+		model.addAttribute("msg","Application "+appId+" accepted and Interview Scheduled");
+		model.addAttribute("applicant", app);
+		return "viewApplication";
 	}
 }

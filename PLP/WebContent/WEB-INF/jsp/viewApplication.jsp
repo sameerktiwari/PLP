@@ -10,8 +10,6 @@
 </head>
 <body>
 	<h2>University Admission System - Application ${applicant.applicationId}</h2>
-	<form:form action="updateStatus.htm" method="post"
-				modelAttribute="Application">
 	<table border="2">
 		<tr>
 			<th>Application ID</th>
@@ -26,30 +24,26 @@
 			<th>Date of Interview</th>
 		</tr>
 				<tr>
-					<td><form:hidden path="applicationId"
-							value="${applicant.applicationId}" /> ${applicant.applicationId}</td>
-					<td><form:hidden path="fullName" value="${appli.fullName}" />${applicant.fullName}</td>
-					<td><form:hidden path="dateOfBirth"
-							value="${applicant.dateOfBirth}" />${applicant.dateOfBirth}</td>
-					<td><form:hidden path="highestQualification"
-							value="${applicant.highestQualification}" />${applicant.highestQualification}</td>
-					<td><form:hidden path="marksObtained"
-							value="${applicant.marksObtained}" />${applicant.marksObtained}</td>
-					<td><form:hidden path="email" value="${applicant.email}" />${applicant.email}</td>
-					<td><form:hidden path="goals" value="${applicant.goals}" />${applicant.goals}</td>
-					<td><form:hidden path="scheduledProgramId"
-							value="${applicant.scheduledProgramId}" />${applicant.scheduledProgramId}</td>
-					<td><form:hidden path="status" value="${applicant.status}" />${applicant.status}</td>
-					<td><form:hidden path="dateOfInterview"
-							value="${applicant.dateOfInterview}" />${applicant.dateOfInterview}</td>
+					<td>${applicant.applicationId}</td>
+					<td>${applicant.fullName}</td>
+					<td>${applicant.dateOfBirth}</td>
+					<td>${applicant.highestQualification}</td>
+					<td>${applicant.marksObtained}</td>
+					<td>${applicant.email}</td>
+					<td>${applicant.goals}</td>
+					<td>${applicant.scheduledProgramId}</td>
+					<td>${applicant.status}</td>
+					<td>${applicant.dateOfInterview}</td>
 					<td></td>
 				</tr>
 				</table>
-				<input type="button" value="Accept" name="acceptbtn"><input type="button" value="Reject" name="rejectbtn"><input type="button" value="Confirm" name="confirmbtn">
-			</form:form>
-			
-	<%-- <a href="updateStatus.htm?status=accept"><c:param name="app" value="${applicant}"></c:param><input type="button" value="Accept"></a>
-	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=reject"><input type="button" value="Reject"></a>
-	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=confirm"><input type="button" value="Confirm"></a> --%>
+	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=Accepted"><input type="button" value="Accept"></a>
+	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=Rejected"><input type="button" value="Reject"></a>
+	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=Confirmed"><input type="button" value="Confirm"></a>
+	<c:if test="${msg ne null}">"${msg}"</c:if>
+	<c:if test="${showDOI ne null}"><form action="setInterview.htm?appId=${applicant.applicationId}" method="post"><p>Enter Date of Interview: <input type="date" name="doi"><input type="submit" value="Schedule Interview"></p></form></c:if>
+<h3>
+		<a href="index.jsp">Home</a>
+	</h3>
 </body>
 </html>

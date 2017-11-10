@@ -1,5 +1,6 @@
 package com.cg.uas.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.cg.uas.entities.Application;
@@ -35,4 +36,5 @@ public interface IService {
 	public Application save(Application app);
 	public List<Application> getApplicant(String programId);
 	public Application modify(Application application,String status);
+	public Application setInterview(Application application, Date dateOfInterview);
 }
