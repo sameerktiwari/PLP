@@ -65,8 +65,8 @@ public class ServiceImpl implements IService{
 	}
 
 	@Override
-	public Application modify(Application application) {
+	public Application modify(Application application,String status) {
 		
-		return dao.modify(application);
+		return dao.modify(application,status);
 	}
 }

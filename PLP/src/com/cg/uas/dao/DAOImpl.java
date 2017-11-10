@@ -90,7 +90,8 @@ public class DAOImpl implements IDAO{
 }
 	
 	@Override
-	public Application modify(Application application) {
+	public Application modify(Application application,String status) {
+		application.setStatus(status);
 		application = entityManager.merge(application);
 		entityManager.flush();	//required to reflect changes on database
 		

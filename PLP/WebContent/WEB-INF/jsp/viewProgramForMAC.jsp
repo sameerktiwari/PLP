@@ -21,7 +21,7 @@
 		</tr>
 
 		<c:forEach items="${programList}" var="prog">
-			<form:form action="viewApplication.htm" method="post"
+			<form:form action="viewApplications.htm" method="post"
 				modelAttribute="ProgramsScheduled">
 				<tr>
 					<td><form:hidden path="scheduledProgrammeId"
@@ -34,7 +34,7 @@
 					<td><form:hidden path="endDate" value="${prog.endDate}" />${prog.endDate}</td>
 					<td><form:hidden path="sessionsPerWeek"
 							value="${prog.sessionsPerWeek}" />${prog.sessionsPerWeek}</td>
-					<td><input type="submit" value="view Application"></td>
+					<td><input type="submit" value="View Applications"></td>
 				</tr>
 			</form:form>
 		</c:forEach>
