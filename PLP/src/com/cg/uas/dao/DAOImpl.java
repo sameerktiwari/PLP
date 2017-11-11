@@ -2,11 +2,15 @@ package com.cg.uas.dao;
 
 import java.sql.Date;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.cg.uas.entities.Application;
 import com.cg.uas.entities.Participant;
 import com.cg.uas.entities.ProgramsOffered;
@@ -14,6 +18,7 @@ import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
 import com.cg.uas.utility.QueryMapper;
 import com.cg.uas.exception.UniversityException;
+
 import org.apache.log4j.*;
 
 @Repository
@@ -202,4 +207,41 @@ public class DAOImpl implements IDAO {
 		}
 
 	}
+
+	@Override
+	public int deleteProgram(String scheduledProgrammeId) throws UniversityException {
+
+		try
+		{
+		 Query query = entityManager.createQuery(QueryMapper.query6);
+			  int deletedCount = query.setParameter("p", scheduledProgrammeId).executeUpdate();
+			  logger.info("Program Deleted");
+		return deletedCount ;
+		}
+		 catch (Exception e) {
+				logger.error(e.getMessage());
+				throw new UniversityException("Program doesnt exist");
+			}
+	}
+	
+	@Override
+	public ProgramsScheduled modify(ProgramsScheduled programsScheduled)
+			throws UniversityException {
+		try {
+			
+			programsScheduled = entityManager.merge(programsScheduled);
+			entityManager.flush(); // required to reflect changes on database
+			logger.info("Program updated");
+			return programsScheduled;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			throw new UniversityException("Problem in Updating program");
+		}
+	}
+	
+	
+	
+
+	
+
 }
