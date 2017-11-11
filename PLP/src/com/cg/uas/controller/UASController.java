@@ -22,6 +22,7 @@ import com.cg.uas.entities.Participant;
 import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
+import com.cg.uas.exception.UniversityException;
 import com.cg.uas.service.IService;
 
 @Controller
@@ -43,12 +44,14 @@ public class UASController {
 		if (result.hasErrors()) {
 			return "login";
 		} else {
-			if (!service.validate(users)) {
-				return users.getRole();
-			} else {
-				model.addAttribute("msg", "Invalid Username or Password");
-				return "error";
-			}
+		
+				if (!service.validate(users)) {
+					return users.getRole();
+				} else {
+					model.addAttribute("msg", "Invalid Username or Password");
+					return "error";
+				}
+			
 		}
 
 	}
@@ -61,21 +64,35 @@ public class UASController {
 	@RequestMapping("/viewprgrms")
 	public String viewprgrms(Model model) {
 
+		try
+		{
 		List<ProgramsScheduled> pList = service.viewProgrammes();
+		
 		model.addAttribute("programList", pList);
 		System.out.println("in cont");
 		ProgramsScheduled programs = new ProgramsScheduled();
 		model.addAttribute("ProgramsScheduled", programs);
 		return "viewProgram";
+	} catch (UniversityException e) {
+		model.addAttribute("msg", e.getMessage());
+		return "error";
+		
+	}
 	}
 
 	@RequestMapping(value = "/programDetails", method = RequestMethod.GET)
 	public String programDetails(@RequestParam("pName") String pName,
 			@RequestParam("pId") String pId, Model model) {
+		try {
 		ProgramsOffered pos = service.getProgramsOffered(pName);
 		model.addAttribute("prog", pos);
 		model.addAttribute("pId", pId);
 		return "programDetail";
+		}
+	catch (UniversityException e) {
+		model.addAttribute("msg", e.getMessage());
+		return "error";
+	}
 	}
 
 	@RequestMapping("/apply")
@@ -93,10 +110,15 @@ public class UASController {
 			model.addAttribute("Application", app);
 			return "application";
 		} else {
+			try
+			{
 			Application ap = service.save(app);
-			System.out.println(ap);
 			model.addAttribute("applicant", ap);
 			return "success";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+		}
 		}
 
 	}
@@ -108,31 +130,51 @@ public class UASController {
 
 	@RequestMapping("/getStatus")
 	public String getStatus(@RequestParam("appId") String appId, Model model) {
+		try
+		{
 		Application app = service.getStatus(Integer.parseInt(appId));
-		model.addAttribute("applicant", app);
+	    model.addAttribute("applicant", app);
 		return "viewStatus";
+		
+	} catch (NumberFormatException e) {
+		model.addAttribute("msg", e.getMessage());
+		return "error";
+	} catch (UniversityException e) {
+		model.addAttribute("msg", e.getMessage());
+		return "error";
+	}
 	}
 
 	@RequestMapping("/viewapps")
 	public String viewapps(Model model) {
-		List<ProgramsScheduled> pList = service.viewProgrammes();
-		model.addAttribute("programList", pList);
+		try {
+		List<ProgramsScheduled> programsScheduled = service.viewProgrammes();
+		model.addAttribute("programList", programsScheduled);
 		ProgramsScheduled programs = new ProgramsScheduled();
 		model.addAttribute("ProgramsScheduled", programs);
 		return "viewProgramForMAC";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+		}
 	}
 
 	@RequestMapping("/viewApplications")
 	public String viewapplications(Model model,
-			@ModelAttribute("ProgramsScheduled") ProgramsScheduled ps,
+			@ModelAttribute("ProgramsScheduled") ProgramsScheduled ProgramsScheduled,
 			BindingResult result) {
 
-		List<Application> appList = service.getApplicant(ps
-				.getScheduledProgrammeId());
-		model.addAttribute("appList", appList);
+		try
+		{
+		List<Application> applications = service.getApplicant(ProgramsScheduled.getScheduledProgrammeId());
+		model.addAttribute("appList", applications);
 		Application app = new Application();
 		model.addAttribute("Application", app);
 		return "viewApplications";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+		}
 	}
 
 	@RequestMapping("/viewApplication")
@@ -145,6 +187,8 @@ public class UASController {
 	@RequestMapping("/updateStatus")
 	public String updateStatus(@RequestParam("appId") int appId,
 			@RequestParam("status") String status, Model model) {
+		try
+		{
 		Application app = service.getStatus(appId);
 		if (("Pending").equals(app.getStatus())) {
 			if (("Accepted").equals(status)) {
@@ -202,23 +246,38 @@ public class UASController {
 			model.addAttribute("applicant", app);
 			return "viewApplication";
 		}
+		}
+		catch(UniversityException e)
+		{
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+		}
 	}
 
 	@RequestMapping(value = "/setInterview", method = RequestMethod.POST)
 	public String setInterview(Model model,
 			@ModelAttribute("Application") @Valid Application app,
 			BindingResult result) {
+		try
+		{
 		if (result.hasErrors()) {
 			model.addAttribute("applicant", app);
 			model.addAttribute("showDOI", "y");
 			return "viewApplication";
 		} else {
+			
 			app = service.modify(app, "Accepted");
 			model.addAttribute("applicant", app);
 			model.addAttribute("msg", "Application " + app.getApplicationId()
 					+ " accepted and Interview Scheduled");
 			model.addAttribute("applicant", app);
 			return "viewApplication";
+		}
+		}catch(UniversityException e)
+		{
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+			
 		}
 	}
 }

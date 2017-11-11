@@ -45,7 +45,6 @@ public class Application implements Serializable {
 	private String fullName;
 
 	@NotNull
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
 
