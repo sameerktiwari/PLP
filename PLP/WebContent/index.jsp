@@ -9,6 +9,7 @@
 </head>
 <body>
 <h1>Welcome to University Admission System</h1>
+<marquee><h2>Admissions Open. <a href="viewprgrms.htm">Apply now!</a></h2></marquee>
 <h2>Login as</h2>
 
 <div id="nav">

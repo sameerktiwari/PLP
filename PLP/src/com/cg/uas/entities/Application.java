@@ -116,7 +116,7 @@ public class Application implements Serializable {
 
 	public Application(String fullName, Date dateOfBirth,
 			String highestQualification, int marksObtained, String goals,
-			String email, String scheduledProgramId) {
+			String email, String scheduledProgramId,String status) {
 		this.fullName = fullName;
 		this.dateOfBirth = dateOfBirth;
 		this.highestQualification = highestQualification;
@@ -124,6 +124,7 @@ public class Application implements Serializable {
 		this.email = email;
 		this.goals = goals;
 		this.scheduledProgramId = scheduledProgramId;
+		this.status=status;
 	}
 
 	public Application(int applicationId, String fullName, Date dateOfBirth,
