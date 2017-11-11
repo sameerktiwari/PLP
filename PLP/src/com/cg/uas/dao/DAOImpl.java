@@ -136,8 +136,10 @@ public class DAOImpl implements IDAO {
 					QueryMapper.query5, Application.class);
 			query.setParameter("pappid", programId);
 			List<Application> applications = query.getResultList();
+			logger.info("Retrieved applications for a given programId");
 			return applications;
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			throw new UniversityException("No Applicant with thte given id");
 		}
 	}
@@ -155,8 +157,10 @@ public class DAOImpl implements IDAO {
 			application.setStatus(status);
 			application = entityManager.merge(application);
 			entityManager.flush(); // required to reflect changes on database
+			logger.info("Status updated");
 			return application;
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			throw new UniversityException("Problem in Updating status");
 		}
 	}
@@ -171,8 +175,10 @@ public class DAOImpl implements IDAO {
 			application.setDateOfInterview(dateOfInterview);
 			application = entityManager.merge(application);
 			entityManager.flush(); // required to reflect changes on database
+			logger.info("Date Of Interview updated");
 			return application;
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			throw new UniversityException(
 					"Problem in Updating Date of Interview");
 		}
@@ -188,8 +194,10 @@ public class DAOImpl implements IDAO {
 		try {
 			entityManager.persist(ppt);
 			entityManager.flush(); // required to reflect changes on database
+			logger.info("Participant Added");
 			return ppt;
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			throw new UniversityException("Problem in persisting participant");
 		}
 
