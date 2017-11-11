@@ -13,11 +13,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author GroupNo. 5 Application by a participant for a scheduled program
@@ -41,7 +44,8 @@ public class Application implements Serializable {
 	@Pattern(regexp="[A-Za-z ]{2,}",message=" Enter only alphabets")
 	private String fullName;
 
-	@Past(message = " Must be a date in the past")
+	@NotNull
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
 
@@ -54,7 +58,7 @@ public class Application implements Serializable {
 	private int marksObtained;
 	
 	@Email
-	@Column(name = "email")
+	@Column(name = "email_id")
 	private String email;
 	
 	@Column(name = "goals")
@@ -66,7 +70,8 @@ public class Application implements Serializable {
 	@Column(name = "status")
 	public String status;
 	
-	@Future(message = " Must be a future date")
+	@NotNull
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	@Column(name = "date_of_interview")
 	public Date dateOfInterview;
 

@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import com.cg.uas.entities.Application;
+import com.cg.uas.entities.Participant;
 import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
@@ -40,4 +41,6 @@ public interface IDAO {
 	public Application modify(Application application,String status);
 
 	public Application setInterview(Application application, Date dateOfInterview);
+
+	public Participant addParticipant(Participant ppt);
 }

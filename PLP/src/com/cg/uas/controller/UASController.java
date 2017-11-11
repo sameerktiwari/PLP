@@ -4,7 +4,9 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.faces.validator.Validator;
 import javax.validation.Valid;
+import javax.validation.Validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cg.uas.entities.Application;
+import com.cg.uas.entities.Participant;
 import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
@@ -140,55 +143,82 @@ public class UASController {
 	}
 
 	@RequestMapping("/updateStatus")
-	public String updateStatus(@RequestParam("appId") int appId,@RequestParam("status") String status, Model model) {
-		Application app=service.getStatus(appId);
-		if (("Pending").equals(app.getStatus())){
-			if(("Accepted").equals(status)){
-			model.addAttribute("showDOI", "y");
-			model.addAttribute("applicant", app);
-			return "viewApplication";
-			}
-			else if(("Rejected").equals(status)){
-				app=service.modify(app, status);
-				model.addAttribute("msg","Application "+appId+" rejected");
+	public String updateStatus(@RequestParam("appId") int appId,
+			@RequestParam("status") String status, Model model) {
+		Application app = service.getStatus(appId);
+		if (("Pending").equals(app.getStatus())) {
+			if (("Accepted").equals(status)) {
+				model.addAttribute("showDOI", "y");
+				model.addAttribute("applicant", app);
+				Application application = new Application();
+				model.addAttribute("Application", application);
+				return "viewApplication";
+			} else if (("Rejected").equals(status)) {
+				app = service.modify(app, status);
+				model.addAttribute("msg", "Application " + appId + " rejected");
+				model.addAttribute("applicant", app);
+				return "viewApplication";
+			} else {
+				model.addAttribute("msg", "Not Applicable");
 				model.addAttribute("applicant", app);
 				return "viewApplication";
 			}
-			else {
-				model.addAttribute("msg","Not Applicable");
+		} else if (("Accepted").equals(app.getStatus())) {
+			if (("Confirmed").equals(status)) {
+				if (app.getDateOfInterview().before(
+						Date.valueOf(LocalDate.now()))) {
+					Participant ppt=new Participant(app.getEmail(), app.getApplicationId(), Integer.parseInt(app.getScheduledProgramId()));
+					service.addParticipant(ppt);
+					app = service.modify(app, status);
+					model.addAttribute("applicant", app);
+					model.addAttribute("msg", "Applicant Confirmed");
+					model.addAttribute("applicant", app);
+					return "viewApplication";
+				} else {
+					model.addAttribute("msg", "Pending Interview Results");
+					model.addAttribute("applicant", app);
+					return "viewApplication";
+				}
+			} else if (("Rejected").equals(status)) {
+				if (app.getDateOfInterview().before(
+						Date.valueOf(LocalDate.now()))) {
+					app = service.modify(app, status);
+					model.addAttribute("msg", "Application " + appId
+							+ " rejected");
+					model.addAttribute("applicant", app);
+					return "viewApplication";
+				} else {
+					model.addAttribute("msg", "Pending Interview Results");
+					model.addAttribute("applicant", app);
+					return "viewApplication";
+				}
+			} else {
+				model.addAttribute("msg", "Not Applicable");
 				model.addAttribute("applicant", app);
 				return "viewApplication";
 			}
-		}
-		else if (("Accepted").equals(app.getStatus()) && (("Confirmed").equals(status))||("Rejected").equals(status)) {
-			if (app.getDateOfInterview().before(Date.valueOf(LocalDate.now()))) {
-				app=service.modify(app, status);
-				model.addAttribute("applicant", app);
-				model.addAttribute("msg","Applicant Confirmed");
-				model.addAttribute("applicant", app);
-				return "viewApplication";
-			}
-			else{
-				model.addAttribute("msg","Pending Interview Results");
-				model.addAttribute("applicant", app);
-				return "viewApplication";
-			}
-		}
-		else {
-			model.addAttribute("msg","Not Applicable");
+		} else {
+			model.addAttribute("msg", "Not Applicable");
 			model.addAttribute("applicant", app);
 			return "viewApplication";
 		}
 	}
-	
-	@RequestMapping(value="/setInterview",method=RequestMethod.POST)
-	public String setInterview(@RequestParam("appId") int appId,@RequestParam("doi") Date doi, Model model) {
-		Application app=service.getStatus(appId);
-		app.setDateOfInterview(doi);
-		app=service.modify(app, "Accepted");
-		model.addAttribute("applicant", app);
-		model.addAttribute("msg","Application "+appId+" accepted and Interview Scheduled");
-		model.addAttribute("applicant", app);
-		return "viewApplication";
+
+	@RequestMapping(value = "/setInterview", method = RequestMethod.POST)
+	public String setInterview(Model model,
+			@ModelAttribute("Application") @Valid Application app,
+			BindingResult result) {
+		if (result.hasErrors()) {
+			model.addAttribute("applicant", app);
+			model.addAttribute("showDOI", "y");
+			return "viewApplication";
+		} else {
+			app = service.modify(app, "Accepted");
+			model.addAttribute("applicant", app);
+			model.addAttribute("msg", "Application " + app.getApplicationId()
+					+ " accepted and Interview Scheduled");
+			model.addAttribute("applicant", app);
+			return "viewApplication";
+		}
 	}
 }

@@ -34,14 +34,29 @@
 					<td>${applicant.scheduledProgramId}</td>
 					<td>${applicant.status}</td>
 					<td>${applicant.dateOfInterview}</td>
-					<td></td>
 				</tr>
 				</table>
 	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=Accepted"><input type="button" value="Accept"></a>
 	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=Rejected"><input type="button" value="Reject"></a>
 	<a href="updateStatus.htm?appId=${applicant.applicationId}&status=Confirmed"><input type="button" value="Confirm"></a>
 	<c:if test="${msg ne null}">"${msg}"</c:if>
-	<c:if test="${showDOI ne null}"><form action="setInterview.htm?appId=${applicant.applicationId}" method="post"><p>Enter Date of Interview: <input type="date" name="doi"><input type="submit" value="Schedule Interview"></p></form></c:if>
+	<c:if test="${showDOI ne null}"><form:form action="setInterview.htm" modelAttribute="Application" method="post">
+	<form:hidden path="applicationId"
+							value="${applicant.applicationId}" />
+					<form:hidden path="fullName" value="${applicant.fullName}" />
+					<form:hidden path="dateOfBirth"
+							value="${applicant.dateOfBirth}" />
+					<form:hidden path="highestQualification"
+							value="${applicant.highestQualification}" />
+					<form:hidden path="marksObtained"
+							value="${applicant.marksObtained}" />
+					<form:hidden path="email" value="${applicant.email}" />
+					<form:hidden path="goals" value="${applicant.goals}" />
+					<form:hidden path="scheduledProgramId"
+							value="${applicant.scheduledProgramId}" />
+					<form:hidden path="status" value="${applicant.status}" />
+	<p>Enter Date of Interview: <form:input path="dateOfInterview"/><input type="submit" value="Schedule Interview"><form:errors path="dateOfInterview"/></p>
+	</form:form></c:if>
 <h3>
 		<a href="index.jsp">Home</a>
 	</h3>

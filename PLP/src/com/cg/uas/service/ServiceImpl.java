@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.cg.uas.dao.DAOImpl;
 import com.cg.uas.dao.IDAO;
 import com.cg.uas.entities.Application;
+import com.cg.uas.entities.Participant;
 import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
@@ -72,5 +73,10 @@ public class ServiceImpl implements IService{
 	@Override
 	public Application setInterview(Application application, Date dateOfInterview){
 		return dao.setInterview(application, dateOfInterview);
+	}
+	
+	@Override
+	public Participant addParticipant(Participant ppt){
+		return dao.addParticipant(ppt);
 	}
 }

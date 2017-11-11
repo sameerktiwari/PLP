@@ -35,10 +35,9 @@ public class Participant implements Serializable{
 	private int scheduledProgramId;
 	
 	
-	public Participant(int rollNo, String emailId, int applicantId,
+	public Participant(String emailId, int applicantId,
 			int scheduledProgramId) {
 		super();
-		this.rollNo = rollNo;
 		this.emailId = emailId;
 		this.applicantId = applicantId;
 		this.scheduledProgramId = scheduledProgramId;

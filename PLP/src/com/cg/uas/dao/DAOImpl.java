@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cg.uas.entities.Application;
+import com.cg.uas.entities.Participant;
 import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
@@ -130,5 +131,14 @@ public class DAOImpl implements IDAO {
 		application = entityManager.merge(application);
 		entityManager.flush(); // required to reflect changes on database
 		return application;
+	}
+	
+	@Override
+	public Participant addParticipant(Participant ppt) {
+
+		entityManager.persist(ppt);
+		entityManager.flush(); // required to reflect changes on database
+
+		return ppt;
 	}
 }
