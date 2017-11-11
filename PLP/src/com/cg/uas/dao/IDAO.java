@@ -42,10 +42,6 @@ public interface IDAO {
 	/**
 	 * @param app
 	 * @return
-	 */
-	/**
-	 * @param app
-	 * @return
 	 * @throws UniversityException
 	 */
 	public Application save(Application app) throws UniversityException;
