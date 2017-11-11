@@ -40,4 +40,12 @@ public class Users {
 		this.role = role;
 	}
 
+	public Users(String loginId, String password, String role) {
+		super();
+		this.loginId = loginId;
+		this.password = password;
+		this.role = role;
+	}
+	public Users() {
+	}
 }
