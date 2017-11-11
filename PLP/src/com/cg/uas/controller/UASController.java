@@ -3,11 +3,7 @@ package com.cg.uas.controller;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
-
-import javax.faces.validator.Validator;
 import javax.validation.Valid;
-import javax.validation.Validation;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.cg.uas.entities.Application;
 import com.cg.uas.entities.Participant;
 import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
+import com.cg.uas.exception.UniversityException;
 import com.cg.uas.service.IService;
 
 @Controller
@@ -43,12 +39,14 @@ public class UASController {
 		if (result.hasErrors()) {
 			return "login";
 		} else {
+
 			if (!service.validate(users)) {
 				return users.getRole();
 			} else {
 				model.addAttribute("msg", "Invalid Username or Password");
 				return "error";
 			}
+
 		}
 
 	}
@@ -61,21 +59,32 @@ public class UASController {
 	@RequestMapping("/viewprgrms")
 	public String viewprgrms(Model model) {
 
-		List<ProgramsScheduled> pList = service.viewProgrammes();
-		model.addAttribute("programList", pList);
-		System.out.println("in cont");
-		ProgramsScheduled programs = new ProgramsScheduled();
-		model.addAttribute("ProgramsScheduled", programs);
-		return "viewProgram";
+		try {
+			List<ProgramsScheduled> programsScheduled = service
+					.viewProgrammes();
+			model.addAttribute("programList", programsScheduled);
+			ProgramsScheduled programs = new ProgramsScheduled();
+			model.addAttribute("ProgramsScheduled", programs);
+			return "viewProgram";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+
+		}
 	}
 
 	@RequestMapping(value = "/programDetails", method = RequestMethod.GET)
 	public String programDetails(@RequestParam("pName") String pName,
 			@RequestParam("pId") String pId, Model model) {
-		ProgramsOffered pos = service.getProgramsOffered(pName);
-		model.addAttribute("prog", pos);
-		model.addAttribute("pId", pId);
-		return "programDetail";
+		try {
+			ProgramsOffered pos = service.getProgramsOffered(pName);
+			model.addAttribute("prog", pos);
+			model.addAttribute("pId", pId);
+			return "programDetail";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+		}
 	}
 
 	@RequestMapping("/apply")
@@ -93,9 +102,20 @@ public class UASController {
 			model.addAttribute("Application", app);
 			return "application";
 		} else {
+<<<<<<< HEAD
 			Application ap = service.save(app);
 			model.addAttribute("applicant", ap);
 			return "success";
+=======
+			try {
+				Application ap = service.save(app);
+				model.addAttribute("applicant", ap);
+				return "success";
+			} catch (UniversityException e) {
+				model.addAttribute("msg", e.getMessage());
+				return "error";
+			}
+>>>>>>> 84a131e032eb476394db1daa6b190636dce566bb
 		}
 
 	}
@@ -107,31 +127,52 @@ public class UASController {
 
 	@RequestMapping("/getStatus")
 	public String getStatus(@RequestParam("appId") String appId, Model model) {
-		Application app = service.getStatus(Integer.parseInt(appId));
-		model.addAttribute("applicant", app);
-		return "viewStatus";
+		try {
+			Application app = service.getStatus(Integer.parseInt(appId));
+			model.addAttribute("applicant", app);
+			return "viewStatus";
+
+		} catch (NumberFormatException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+		}
 	}
 
 	@RequestMapping("/viewapps")
 	public String viewapps(Model model) {
-		List<ProgramsScheduled> pList = service.viewProgrammes();
-		model.addAttribute("programList", pList);
-		ProgramsScheduled programs = new ProgramsScheduled();
-		model.addAttribute("ProgramsScheduled", programs);
-		return "viewProgramForMAC";
+		try {
+			List<ProgramsScheduled> programsScheduled = service
+					.viewProgrammes();
+			model.addAttribute("programList", programsScheduled);
+			ProgramsScheduled programs = new ProgramsScheduled();
+			model.addAttribute("ProgramsScheduled", programs);
+			return "viewProgramForMAC";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+		}
 	}
 
 	@RequestMapping("/viewApplications")
-	public String viewapplications(Model model,
-			@ModelAttribute("ProgramsScheduled") ProgramsScheduled ps,
+	public String viewapplications(
+			Model model,
+			@ModelAttribute("ProgramsScheduled") ProgramsScheduled ProgramsScheduled,
 			BindingResult result) {
 
-		List<Application> appList = service.getApplicant(ps
-				.getScheduledProgrammeId());
-		model.addAttribute("appList", appList);
-		Application app = new Application();
-		model.addAttribute("Application", app);
-		return "viewApplications";
+		try {
+			List<Application> applications = service
+					.getApplicant(ProgramsScheduled.getScheduledProgrammeId());
+			model.addAttribute("appList", applications);
+			Application app = new Application();
+			model.addAttribute("Application", app);
+			return "viewApplications";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+		}
 	}
 
 	@RequestMapping("/viewApplication")
@@ -144,50 +185,59 @@ public class UASController {
 	@RequestMapping("/updateStatus")
 	public String updateStatus(@RequestParam("appId") int appId,
 			@RequestParam("status") String status, Model model) {
-		Application app = service.getStatus(appId);
-		if (("Pending").equals(app.getStatus())) {
-			if (("Accepted").equals(status)) {
-				model.addAttribute("showDOI", "y");
-				model.addAttribute("applicant", app);
-				Application application = new Application();
-				model.addAttribute("Application", application);
-				return "viewApplication";
-			} else if (("Rejected").equals(status)) {
-				app = service.modify(app, status);
-				model.addAttribute("msg", "Application " + appId + " rejected");
-				model.addAttribute("applicant", app);
-				return "viewApplication";
-			} else {
-				model.addAttribute("msg", "Not Applicable");
-				model.addAttribute("applicant", app);
-				return "viewApplication";
-			}
-		} else if (("Accepted").equals(app.getStatus())) {
-			if (("Confirmed").equals(status)) {
-				if (app.getDateOfInterview().before(
-						Date.valueOf(LocalDate.now()))) {
-					Participant ppt=new Participant(app.getEmail(), app.getApplicationId(), Integer.parseInt(app.getScheduledProgramId()));
-					service.addParticipant(ppt);
-					app = service.modify(app, status);
+		try {
+			Application app = service.getStatus(appId);
+			if (("Pending").equals(app.getStatus())) {
+				if (("Accepted").equals(status)) {
+					model.addAttribute("showDOI", "y");
 					model.addAttribute("applicant", app);
-					model.addAttribute("msg", "Applicant Confirmed");
-					model.addAttribute("applicant", app);
+					Application application = new Application();
+					model.addAttribute("Application", application);
 					return "viewApplication";
-				} else {
-					model.addAttribute("msg", "Pending Interview Results");
-					model.addAttribute("applicant", app);
-					return "viewApplication";
-				}
-			} else if (("Rejected").equals(status)) {
-				if (app.getDateOfInterview().before(
-						Date.valueOf(LocalDate.now()))) {
+				} else if (("Rejected").equals(status)) {
 					app = service.modify(app, status);
 					model.addAttribute("msg", "Application " + appId
 							+ " rejected");
 					model.addAttribute("applicant", app);
 					return "viewApplication";
 				} else {
-					model.addAttribute("msg", "Pending Interview Results");
+					model.addAttribute("msg", "Not Applicable");
+					model.addAttribute("applicant", app);
+					return "viewApplication";
+				}
+			} else if (("Accepted").equals(app.getStatus())) {
+				if (("Confirmed").equals(status)) {
+					if (app.getDateOfInterview().before(
+							Date.valueOf(LocalDate.now()))) {
+						Participant ppt = new Participant(app.getEmail(),
+								app.getApplicationId(), Integer.parseInt(app
+										.getScheduledProgramId()));
+						service.addParticipant(ppt);
+						app = service.modify(app, status);
+						model.addAttribute("applicant", app);
+						model.addAttribute("msg", "Applicant Confirmed");
+						model.addAttribute("applicant", app);
+						return "viewApplication";
+					} else {
+						model.addAttribute("msg", "Pending Interview Results");
+						model.addAttribute("applicant", app);
+						return "viewApplication";
+					}
+				} else if (("Rejected").equals(status)) {
+					if (app.getDateOfInterview().before(
+							Date.valueOf(LocalDate.now()))) {
+						app = service.modify(app, status);
+						model.addAttribute("msg", "Application " + appId
+								+ " rejected");
+						model.addAttribute("applicant", app);
+						return "viewApplication";
+					} else {
+						model.addAttribute("msg", "Pending Interview Results");
+						model.addAttribute("applicant", app);
+						return "viewApplication";
+					}
+				} else {
+					model.addAttribute("msg", "Not Applicable");
 					model.addAttribute("applicant", app);
 					return "viewApplication";
 				}
@@ -196,10 +246,9 @@ public class UASController {
 				model.addAttribute("applicant", app);
 				return "viewApplication";
 			}
-		} else {
-			model.addAttribute("msg", "Not Applicable");
-			model.addAttribute("applicant", app);
-			return "viewApplication";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
 		}
 	}
 
@@ -207,17 +256,25 @@ public class UASController {
 	public String setInterview(Model model,
 			@ModelAttribute("Application") @Valid Application app,
 			BindingResult result) {
-		if (result.hasErrors()) {
-			model.addAttribute("applicant", app);
-			model.addAttribute("showDOI", "y");
-			return "viewApplication";
-		} else {
-			app = service.modify(app, "Accepted");
-			model.addAttribute("applicant", app);
-			model.addAttribute("msg", "Application " + app.getApplicationId()
-					+ " accepted and Interview Scheduled");
-			model.addAttribute("applicant", app);
-			return "viewApplication";
+		try {
+			if (result.hasErrors()) {
+				model.addAttribute("applicant", app);
+				model.addAttribute("showDOI", "y");
+				return "viewApplication";
+			} else {
+
+				app = service.modify(app, "Accepted");
+				model.addAttribute("applicant", app);
+				model.addAttribute("msg",
+						"Application " + app.getApplicationId()
+								+ " accepted and Interview Scheduled");
+				model.addAttribute("applicant", app);
+				return "viewApplication";
+			}
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+
 		}
 	}
 }

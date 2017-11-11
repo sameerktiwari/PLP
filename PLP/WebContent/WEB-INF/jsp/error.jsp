@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Error Occured: <c:out value="${msg}"></c:out></h2>
+<h2>Error Occured: ${msg}</h2>
 </body>
 </html>

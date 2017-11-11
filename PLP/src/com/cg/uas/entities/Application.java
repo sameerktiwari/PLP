@@ -2,7 +2,6 @@ package com.cg.uas.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,11 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
 import org.hibernate.validator.constraints.Email;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author GroupNo. 5 Application by a participant for a scheduled program
@@ -36,7 +32,7 @@ public class Application implements Serializable {
 	public int applicationId;
 
 	@Column(name = "full_name")
-	@Pattern(regexp="[A-Za-z ]{2,}",message=" Enter only alphabets")
+	@Pattern(regexp = "[A-Za-z ]{2,}", message = " Enter only alphabets")
 	private String fullName;
 
 	@Column(name = "date_of_birth")
@@ -44,25 +40,25 @@ public class Application implements Serializable {
 
 	@Column(name = "highest_Qualification")
 	private String highestQualification;
-	
+
 	@Column(name = "marks_Obtained")
 	@Min(value = 0, message = " Must be greater than or equal to 0")
 	@Max(value = 100, message = " Must be smaller than or equal to 100")
 	private int marksObtained;
-	
+
 	@Email
 	@Column(name = "email_id")
 	private String email;
-	
+
 	@Column(name = "goals")
 	private String goals;
-	
+
 	@Column(name = "scheduled_Program_Id")
 	private String scheduledProgramId;
-	
+
 	@Column(name = "status")
 	public String status;
-	
+
 	@Column(name = "date_of_interview")
 	public Date dateOfInterview;
 

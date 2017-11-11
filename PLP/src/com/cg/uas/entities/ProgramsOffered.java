@@ -1,41 +1,36 @@
 package com.cg.uas.entities;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * @author GroupNo.5
- * Programs which are on the guideline of 
- * University.Contains who are eligible 
- * the duration of the program and which degree 
- * will be given on the completion
+ * @author GroupNo.5 Programs which are on the guideline of University.Contains
+ *         who are eligible the duration of the program and which degree will be
+ *         given on the completion
  *
  */
 @Entity
-@Table(name="Programs_Offered")
-public class ProgramsOffered implements Serializable
-{
+@Table(name = "Programs_Offered")
+public class ProgramsOffered implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Column(name="programName")
+	@Column(name = "programName")
 	protected String programName;
-	@Column(name="description")
+	@Column(name = "description")
 	protected String description;
-	@Column(name="applicant_Eligibility")
+	@Column(name = "applicant_Eligibility")
 	protected String applicantEligibility;
-	@Column(name="duration")
+	@Column(name = "duration")
 	protected int duration;
-	@Column(name="degree_certificate_offered")
+	@Column(name = "degree_certificate_offered")
 	protected String degree;
-	
-	
+
 	public ProgramsOffered(String programName, String description,
 			String applicantEligibilty, int duration, String degree) {
 		super();
@@ -54,51 +49,41 @@ public class ProgramsOffered implements Serializable
 		return programName;
 	}
 
-
 	public void setProgramName(String programName) {
 		this.programName = programName;
 	}
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 	public String getApplicantEligibility() {
 		return applicantEligibility;
 	}
 
-
 	public void setApplicantEligibility(String applicantEligibility) {
 		this.applicantEligibility = applicantEligibility;
 	}
-
 
 	public int getDuration() {
 		return duration;
 	}
 
-
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-
 
 	public String getDegree() {
 		return degree;
 	}
 
-
 	public void setDegree(String degree) {
 		this.degree = degree;
 	}
-
 
 	@Override
 	public String toString() {
@@ -106,7 +91,5 @@ public class ProgramsOffered implements Serializable
 				+ description + ", applicantEligibilty=" + applicantEligibility
 				+ ", duration=" + duration + ", degree=" + degree + "]";
 	}
-	
-	
-	
+
 }

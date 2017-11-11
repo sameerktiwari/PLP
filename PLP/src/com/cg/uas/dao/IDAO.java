@@ -2,45 +2,85 @@ package com.cg.uas.dao;
 
 import java.sql.Date;
 import java.util.List;
-
 import com.cg.uas.entities.Application;
 import com.cg.uas.entities.Participant;
 import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
+import com.cg.uas.exception.UniversityException;
 
 public interface IDAO {
 
 	/**
 	 * @param user
 	 * @return
+	 * @throws UniversityException
 	 */
 	public boolean validate(Users user);
-	
+
 	/**
 	 * @return
+	 * @throws UniversityException
 	 */
-	public List<ProgramsScheduled> viewProgrammes();
+	public List<ProgramsScheduled> viewProgrammes() throws UniversityException;
+
 	/**
 	 * @param pname
 	 * @return
+	 * @throws UniversityException
 	 */
-	public ProgramsOffered getProgramsOffered(String pname);
+	public ProgramsOffered getProgramsOffered(String pname)
+			throws UniversityException;
+
 	/**
 	 * @param appid
 	 * @return
+	 * @throws UniversityException
 	 */
-	public Application getStatus(int appid);
+	public Application getStatus(int appid) throws UniversityException;
+
 	/**
 	 * @param app
 	 * @return
 	 */
-	public Application save(Application app);
-	public List<Application> getApplicant(String programId);
+	/**
+	 * @param app
+	 * @return
+	 * @throws UniversityException
+	 */
+	public Application save(Application app) throws UniversityException;
 
-	public Application modify(Application application,String status);
+	/**
+	 * @param programId
+	 * @return
+	 * @throws UniversityException
+	 */
+	public List<Application> getApplicant(String programId)
+			throws UniversityException;
 
-	public Application setInterview(Application application, Date dateOfInterview);
+	/**
+	 * @param application
+	 * @param status
+	 * @return
+	 * @throws UniversityException
+	 */
+	public Application modify(Application application, String status)
+			throws UniversityException;
 
-	public Participant addParticipant(Participant ppt);
+	/**
+	 * @param application
+	 * @param dateOfInterview
+	 * @return
+	 * @throws UniversityException
+	 */
+	public Application setInterview(Application application,
+			Date dateOfInterview) throws UniversityException;
+
+	/**
+	 * @param ppt
+	 * @return
+	 * @throws UniversityException
+	 */
+	public Participant addParticipant(Participant ppt)
+			throws UniversityException;
 }
