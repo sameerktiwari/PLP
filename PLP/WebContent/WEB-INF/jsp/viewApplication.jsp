@@ -12,7 +12,7 @@
 </head>
 <body>
 	<h1>University Admission System - Application ${applicant.applicationId}</h1>
-	<table>
+	<table  align="center">
 		<tr>
 			<th>Application ID</th>
 			<th>Full Name</th>

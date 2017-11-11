@@ -14,7 +14,7 @@
 	<h1>University Admission System - Application Form</h1>
 	<h2>Enter your Details</h2>
 	<form:form action="add.htm" method="post" modelAttribute="Application">
-		<table border="1" align="center">
+		<table align="center">
 			<tr>
 				<td>Full name:</td>
 				<td><form:input path="fullName" pattern="[A-Za-z ]{2,}"

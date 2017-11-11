@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1>University Admission System - Applications</h1>
-	<table>
+	<table align="center">
 		<tr>
 			<th>Application ID</th>
 			<th>Full Name</th>
@@ -23,6 +23,7 @@
 			<th>Scheduled Programme ID</th>
 			<th>Status</th>
 			<th>Date of Interview</th>
+			<th></th>
 		</tr>
 		<c:forEach items="${appList}" var="appli">
 			<form:form action="viewApplication.htm" method="post"

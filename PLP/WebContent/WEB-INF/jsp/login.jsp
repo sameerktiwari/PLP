@@ -7,11 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login Page</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
+<h1>University Admission System- Login</h1>
 <h2>Enter your LoginId and Password</h2>
 <form:form action="validate.htm" method="post" modelAttribute="users">
-<table>
+<table align="center">
 			<tr>
 				<td>LoginId:</td>
 				<td><form:input path="loginId" /> <form:errors path="loginId" /></td>
@@ -26,8 +28,6 @@
 </table>
 <form:hidden path="role" value="${users.role}"/>		
 </form:form>
-<h3>
-		<a href="index.jsp">Home</a>
-	</h3>
+<div id="footer"><a href="index.jsp">Home</a></div>
 </body>
 </html>
