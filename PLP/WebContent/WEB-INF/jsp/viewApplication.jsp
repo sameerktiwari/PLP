@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Application ${applicant.applicationId}</title>
+<script><%@include file="/WEB-INF/js/validateDate.js" %></script>
 </head>
 <body>
 	<h2>University Admission System - Application ${applicant.applicationId}</h2>
@@ -55,7 +56,7 @@
 					<form:hidden path="scheduledProgramId"
 							value="${applicant.scheduledProgramId}" />
 					<form:hidden path="status" value="${applicant.status}" />
-	<p>Enter Date of Interview: <form:input path="dateOfInterview"/><input type="submit" value="Schedule Interview"><form:errors path="dateOfInterview"/></p>
+	<p>Enter Date of Interview: <form:input  id="dateOfInterview" path="dateOfInterview"/><input type="submit" value="Schedule Interview" onclick="return isAfter()"><form:errors path="dateOfInterview"/></p>
 	</form:form></c:if>
 <h3>
 		<a href="index.jsp">Home</a>

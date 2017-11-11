@@ -94,7 +94,6 @@ public class UASController {
 			return "application";
 		} else {
 			Application ap = service.save(app);
-			System.out.println(ap);
 			model.addAttribute("applicant", ap);
 			return "success";
 		}

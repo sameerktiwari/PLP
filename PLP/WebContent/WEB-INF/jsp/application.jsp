@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Application</title>
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<script><%@include file="/WEB-INF/js/validateDate.js" %></script>
 </head>
 <body>
 	<h1>University Admission System - Application Form</h1>
@@ -22,7 +23,7 @@
 			</tr>
 			<tr>
 				<td>Date of Birth:</td>
-				<td><form:input path="dateOfBirth" required="required"
+				<td><form:input id="dateOfBirth" path="dateOfBirth" required="required"
 						placeholder="yyyy-mm-dd" title="Enter valid Date of Birth" /> <form:errors
 						path="dateOfBirth" /></td>
 			</tr>
@@ -52,7 +53,7 @@
 				<form:hidden path="status" value="Pending" />
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="Submit Details"></td>
+				<td colspan="2"><input type="submit" value="Submit Details" onclick="return isBefore()"></td>
 			</tr>
 		</table>
 		<form:hidden path="scheduledProgramId" value="${pId}" />
