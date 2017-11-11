@@ -3,7 +3,9 @@ package com.cg.uas.controller;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.cg.uas.entities.Application;
 import com.cg.uas.entities.Participant;
 import com.cg.uas.entities.ProgramsOffered;
@@ -102,11 +105,6 @@ public class UASController {
 			model.addAttribute("Application", app);
 			return "application";
 		} else {
-<<<<<<< HEAD
-			Application ap = service.save(app);
-			model.addAttribute("applicant", ap);
-			return "success";
-=======
 			try {
 				Application ap = service.save(app);
 				model.addAttribute("applicant", ap);
@@ -115,7 +113,6 @@ public class UASController {
 				model.addAttribute("msg", e.getMessage());
 				return "error";
 			}
->>>>>>> 84a131e032eb476394db1daa6b190636dce566bb
 		}
 
 	}
@@ -166,6 +163,8 @@ public class UASController {
 			List<Application> applications = service
 					.getApplicant(ProgramsScheduled.getScheduledProgrammeId());
 			model.addAttribute("appList", applications);
+			if (applications.isEmpty())
+				throw new UniversityException("No applications submitted");
 			Application app = new Application();
 			model.addAttribute("Application", app);
 			return "viewApplications";

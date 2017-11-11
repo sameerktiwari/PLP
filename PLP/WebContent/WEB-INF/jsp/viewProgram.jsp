@@ -12,7 +12,7 @@
 <body>
 	<h1>University Admission System - Programmes Scheduled</h1>
 	<h2>Programmes Scheduled for the Winter Session</h2>
-	<table border="1" align="center">
+	<table align="center">
 		<tr>
 			<th>Program Id</th>
 			<th>Program Name</th>
@@ -20,6 +20,7 @@
 			<th>Start Date</th>
 			<th>End date</th>
 			<th>Session Per week</th>
+			<th></th>
 		</tr>
 
 		<c:forEach items="${programList}" var="prog">

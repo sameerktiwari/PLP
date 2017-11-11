@@ -19,7 +19,7 @@ import org.apache.log4j.*;
 @Repository
 @Transactional
 public class DAOImpl implements IDAO {
-
+	
 	private static Logger logger= Logger.getLogger(com.cg.uas.dao.DAOImpl.class);
 	@PersistenceContext
 	EntityManager entityManager;
@@ -161,6 +161,9 @@ public class DAOImpl implements IDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.dao.IDAO#setInterview(com.cg.uas.entities.Application, java.sql.Date)
+	 */
 	@Override
 	public Application setInterview(Application application,
 			Date dateOfInterview) throws UniversityException {
@@ -175,6 +178,9 @@ public class DAOImpl implements IDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.dao.IDAO#addParticipant(com.cg.uas.entities.Participant)
+	 */
 	@Override
 	public Participant addParticipant(Participant ppt)
 			throws UniversityException {

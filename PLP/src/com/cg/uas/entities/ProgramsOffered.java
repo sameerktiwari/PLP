@@ -1,6 +1,7 @@
 package com.cg.uas.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class ProgramsOffered implements Serializable {
 	protected String degree;
 
 	public ProgramsOffered(String programName, String description,
-			String applicantEligibilty, int duration, String degree) {
+			String applicantEligibility, int duration, String degree) {
 		super();
 		this.programName = programName;
 		this.description = description;

@@ -8,10 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Application ${applicant.applicationId}</title>
 <script><%@include file="/WEB-INF/js/validateDate.js" %></script>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
-	<h2>University Admission System - Application ${applicant.applicationId}</h2>
-	<table border="2">
+	<h1>University Admission System - Application ${applicant.applicationId}</h1>
+	<table>
 		<tr>
 			<th>Application ID</th>
 			<th>Full Name</th>
@@ -58,8 +59,8 @@
 					<form:hidden path="status" value="${applicant.status}" />
 	<p>Enter Date of Interview: <form:input  id="dateOfInterview" path="dateOfInterview"/><input type="submit" value="Schedule Interview" onclick="return isAfter()"><form:errors path="dateOfInterview"/></p>
 	</form:form></c:if>
-<h3>
+<div id="footer">
 		<a href="index.jsp">Home</a>
-	</h3>
+	</div>
 </body>
 </html>

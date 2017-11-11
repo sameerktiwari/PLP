@@ -7,10 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Applications</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
-<h2>University Admission System - Applications</h2>
-	<table border="2">
+<h1>University Admission System - Applications</h1>
+	<table>
 		<tr>
 			<th>Application ID</th>
 			<th>Full Name</th>
@@ -48,8 +49,8 @@
 			</form:form>
 		</c:forEach>
 	</table>
-	<h3>
+	<div id="footer">
 		<a href="index.jsp">Home</a>
-	</h3>
+	</div>
 </body>
 </html>

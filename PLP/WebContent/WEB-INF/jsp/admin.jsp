@@ -5,8 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
-
+<h1>University Admission System - Adminstrator</h1>
 </body>
 </html>

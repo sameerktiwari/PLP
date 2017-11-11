@@ -8,7 +8,7 @@
 <title>View Status</title>
 </head>
 <body>
-	<h2>University Admission System- Applicant</h2>
+	<h1>University Admission System- Applicant</h1>
 	<form action="getStatus.htm">
 		<table>
 			<tr>
@@ -65,8 +65,8 @@
 			</table>
 		</c:if>
 	</form>
-	<h3>
+	<div id="footer">
 		<a href="index.jsp">Home</a>
-	</h3>
+	</div>
 </body>
 </html>

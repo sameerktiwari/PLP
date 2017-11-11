@@ -10,13 +10,12 @@
 <body>
 <h1>University Admission System- Applicant</h1>
 <div id="nav">
-<a href="index.jsp">Home</a>
 			<ul>
 				<li><a href="viewprgrms.htm">View Programmes</a></li>
 				<li><a href="viewstatus.htm">View Status</a></li>
 			</ul>	
 </div>
 
-<div id="footer"><p></p></div>
+<div id="footer"><a href="index.jsp">Home</a></div>
 </body>
 </html>

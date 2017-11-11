@@ -5,10 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>MAC</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
-<h2>University Admission System - Member of Admission Committee</h2>
-<h4><a href="viewapps.htm">View Applications</a></h4>
-<h3><a href="index.jsp">Home</a></h3>
+<h1>University Admission System - Member of Admission Committee</h1>
+<div id="nav">
+<a href="index.jsp">Home</a>
+			<ul>
+				<li><a href="viewapps.htm">View Applications</a></li>
+				<li><a href="viewstatus.htm">View Status</a></li>
+			</ul>	
+</div>
+
+<div id="footer"><p><a href="index.jsp">Home</a></p></div>
 </body>
 </html>

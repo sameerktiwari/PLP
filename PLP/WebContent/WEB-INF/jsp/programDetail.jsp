@@ -12,7 +12,7 @@
 <body>
 	<h1>University Admission System - Programme Details</h1>
 	<h2>Programs offered by the University</h2>
-	<table border="1" align="center">
+	<table align="center">
 		<tr>
 			<th>Program Name</th>
 			<th>Description</th>

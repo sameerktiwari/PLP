@@ -7,10 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View Program Scheduled</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
-	<h2>Program Scheduled for the winter Session</h2>
-	<table border="1">
+<h1>University Admission System - Programmes Scheduled</h1>
+	<h2>Program Scheduled for the Winter Session</h2>
+	<table>
 		<tr>
 			<th>Program Id</th>
 			<th>Program Name</th>
@@ -78,8 +80,8 @@
 			</c:forEach>
 		</table>
 	</c:if>
-	<h3>
+	<div id="footer">
 		<a href="index.jsp">Home</a>
-	</h3>
+	</div>
 </body>
 </html>
