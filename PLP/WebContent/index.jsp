@@ -5,12 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
-<h2>Welcome to University Admission System</h2>
-<h3>Login as</h3>
-<h4><a href="applicant.htm">Applicant</a></h4>
-<h4><a href="login.htm?role=mac">MAC</a></h4>
-<h4><a href="login.htm?role=admin">Admin</a></h4>
+<h1>Welcome to University Admission System</h1>
+<h2>Login as</h2>
+
+<div id="nav">
+			<ul>
+				<li><a href="applicant.htm">Applicant</a></li>
+				<li><a href="login.htm?role=mac">MAC</a></li>
+				<li><a href="login.htm?role=admin">Admin</a></li>
+			</ul>	
+</div>
+<div id="footer"><p></p></div>
 </body>
 </html>

@@ -5,11 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Applicant</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
-<h2>University Admission System- Applicant</h2>
-<h4><a href="viewprgrms.htm">View Programmes</a></h4>
-<h4><a href="viewstatus.htm">View Status</a></h4>
-<h3><a href="index.jsp">Home</a></h3>
+<h1>University Admission System- Applicant</h1>
+<div id="nav">
+<a href="index.jsp">Home</a>
+			<ul>
+				<li><a href="viewprgrms.htm">View Programmes</a></li>
+				<li><a href="viewstatus.htm">View Status</a></li>
+			</ul>	
+</div>
+
+<div id="footer"><p></p></div>
 </body>
 </html>

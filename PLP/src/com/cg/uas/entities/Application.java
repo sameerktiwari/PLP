@@ -3,23 +3,18 @@ package com.cg.uas.entities;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.enterprise.inject.Default;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -44,7 +39,10 @@ public class Application implements Serializable {
 	@Pattern(regexp="[A-Za-z ]{2,}",message=" Enter only alphabets")
 	private String fullName;
 
+<<<<<<< HEAD
 	@NotNull
+=======
+>>>>>>> 36b8470f62cbb66f9ec5acb8a4cce3f9d1b8596f
 	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
 
@@ -69,8 +67,6 @@ public class Application implements Serializable {
 	@Column(name = "status")
 	public String status;
 	
-	@NotNull
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	@Column(name = "date_of_interview")
 	public Date dateOfInterview;
 
