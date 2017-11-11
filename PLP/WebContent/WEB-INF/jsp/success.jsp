@@ -7,13 +7,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Success</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
-	<h2>University Admission System - Application Submitted</h2>
-	<h3>Your Application submitted successfully</h3>
-	<h3>Application ID: ${applicant.applicationId}</h3>
-	<h3>
+	<h1>University Admission System - Application Submitted</h1>
+	<h2>Your Application submitted successfully</h2>
+	<h2>Application ID: ${applicant.applicationId}</h2>
+	<div id="footer">
 		<a href="index.jsp">Home</a>
-	</h3>
+	</div>
 </body>
 </html>

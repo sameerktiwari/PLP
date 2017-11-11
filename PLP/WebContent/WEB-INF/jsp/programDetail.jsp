@@ -7,10 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View Program Scheduled</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
+	<h1>University Admission System - Programme Details</h1>
 	<h2>Programs offered by the University</h2>
-	<table border="1">
+	<table border="1" align="center">
 		<tr>
 			<th>Program Name</th>
 			<th>Description</th>
@@ -27,11 +29,14 @@
 				<td>${prog.degree}</td>
 			</tr>
 			<tr>
-				<td colspan="5"><a href="apply.htm?pId=${pId}"><button>Apply here</button></a></td>
+				<td colspan="5"><a href="apply.htm?pId=${pId}"><button>Apply
+							here</button></a></td>
 			</tr>
 		</c:if>
 
 	</table>
-<h3><a href="index.jsp">Home</a></h3>	
+	<div id="footer">
+		<a href="index.jsp">Home</a>
+	</div>
 </body>
 </html>
