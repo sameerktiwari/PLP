@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,16 +17,15 @@ import com.cg.uas.entities.Participant;
 import com.cg.uas.entities.ProgramsOffered;
 import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
-import com.cg.uas.utility.QueryMapper;
 import com.cg.uas.exception.UniversityException;
-
-import org.apache.log4j.*;
+import com.cg.uas.utility.QueryMapper;
 
 @Repository
 @Transactional
 public class DAOImpl implements IDAO {
-	
-	private static Logger logger= Logger.getLogger(com.cg.uas.dao.DAOImpl.class);
+
+	private static Logger logger = Logger
+			.getLogger(com.cg.uas.dao.DAOImpl.class);
 	@PersistenceContext
 	EntityManager entityManager;
 
@@ -56,7 +56,7 @@ public class DAOImpl implements IDAO {
 		try {
 			TypedQuery<ProgramsScheduled> query = entityManager.createQuery(
 					QueryMapper.programs, ProgramsScheduled.class);
-			 logger.info("Retrieved Programs Scheduled");
+			logger.info("Retrieved Programs Scheduled");
 			return query.getResultList();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -170,8 +170,11 @@ public class DAOImpl implements IDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cg.uas.dao.IDAO#setInterview(com.cg.uas.entities.Application, java.sql.Date)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.cg.uas.dao.IDAO#setInterview(com.cg.uas.entities.Application,
+	 * java.sql.Date)
 	 */
 	@Override
 	public Application setInterview(Application application,
@@ -189,7 +192,9 @@ public class DAOImpl implements IDAO {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.cg.uas.dao.IDAO#addParticipant(com.cg.uas.entities.Participant)
 	 */
 	@Override
@@ -208,7 +213,6 @@ public class DAOImpl implements IDAO {
 
 	}
 
-	
 	@Override
 	public ProgramsScheduled getProgram(String programId)
 			throws UniversityException {
@@ -226,28 +230,27 @@ public class DAOImpl implements IDAO {
 		}
 	}
 
-
 	@Override
-	public int deleteProgram(String scheduledProgrammeId) throws UniversityException {
+	public int deleteProgram(String scheduledProgrammeId)
+			throws UniversityException {
 
-		try
-		{
-		 Query query = entityManager.createQuery(QueryMapper.deletePrograms);
-			  int deletedCount = query.setParameter("p", scheduledProgrammeId).executeUpdate();
-			  logger.info("Program Deleted");
-		return deletedCount ;
+		try {
+			Query query = entityManager.createQuery(QueryMapper.deletePrograms);
+			int deletedCount = query.setParameter("p", scheduledProgrammeId)
+					.executeUpdate();
+			logger.info("Program Deleted");
+			return deletedCount;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			throw new UniversityException("Program does not exist");
 		}
-		 catch (Exception e) {
-				logger.error(e.getMessage());
-				throw new UniversityException("Program does not exist");
-			}
 	}
-	
+
 	@Override
 	public ProgramsScheduled modify(ProgramsScheduled programsScheduled)
 			throws UniversityException {
 		try {
-			
+
 			programsScheduled = entityManager.merge(programsScheduled);
 			entityManager.flush(); // required to reflect changes on database
 			logger.info("Program updated");

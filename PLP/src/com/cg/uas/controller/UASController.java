@@ -22,6 +22,7 @@ import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
 import com.cg.uas.exception.UniversityException;
 import com.cg.uas.service.IService;
+import com.sun.media.jfxmedia.logging.Logger;
 
 @Controller
 public class UASController {
@@ -129,10 +130,7 @@ public class UASController {
 			model.addAttribute("applicant", app);
 			return "viewStatus";
 
-		} catch (NumberFormatException e) {
-			model.addAttribute("msg", e.getMessage());
-			return "error";
-		} catch (UniversityException e) {
+		} catch (UniversityException|NumberFormatException e) {
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 		}
@@ -276,7 +274,7 @@ public class UASController {
 
 		}
 	}
-	
+
 	@RequestMapping("/viewAdminPrgrms")
 	public String viewAdminPrgrms(Model model) {
 		try {
@@ -292,9 +290,9 @@ public class UASController {
 
 		}
 	}
-	
+
 	@RequestMapping("/updatePrgrm")
-	public String updatePrgrm(@RequestParam("pId") String pId,Model model) {
+	public String updatePrgrm(@RequestParam("pId") String pId, Model model) {
 		try {
 			ProgramsScheduled programsScheduled = service.getProgram(pId);
 			model.addAttribute("prog", programsScheduled);
@@ -307,28 +305,32 @@ public class UASController {
 
 		}
 	}
-	
-	@RequestMapping(value ="/update", method = RequestMethod.POST)
-	public String update(@ModelAttribute("programsScheduled") @Valid ProgramsScheduled programsScheduled,Model model) {
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(
+			@ModelAttribute("programsScheduled") @Valid ProgramsScheduled programsScheduled,
+			Model model) {
 		try {
 			ProgramsScheduled programs = service.modify(programsScheduled);
-			model.addAttribute("message", "Program with Id "+programs.getScheduledProgrammeId()+" successfully modified");
+			model.addAttribute("message",
+					"Program with Id " + programs.getScheduledProgrammeId()
+							+ " successfully modified");
 			return "admin";
 		} catch (UniversityException e) {
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 
 		}
-		
+
 	}
-	
+
 	@RequestMapping("/deletePrgrm")
-	public String deletePrgrm(@RequestParam("pId") String pId,Model model) {
+	public String deletePrgrm(@RequestParam("pId") String pId, Model model) {
 		try {
 			int status = service.deleteProgram(pId);
-			if(status==1)
-			{
-			model.addAttribute("message", "Program with Id "+pId+" successfully deleted");
+			if (status == 1) {
+				model.addAttribute("message", "Program with Id " + pId
+						+ " successfully deleted");
 			}
 			return "admin";
 		} catch (UniversityException e) {
@@ -337,8 +339,5 @@ public class UASController {
 
 		}
 	}
-	
 
 }
-
-

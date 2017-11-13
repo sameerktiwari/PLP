@@ -1,21 +1,15 @@
 package com.cg.uas.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.sql.Date;
 
-import junit.framework.Assert;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.cg.uas.dao.DAOImpl;
 import com.cg.uas.dao.IDAO;
 import com.cg.uas.entities.Application;
 import com.cg.uas.entities.Users;
@@ -26,17 +20,7 @@ import com.cg.uas.exception.UniversityException;
 public class DAOImplTest {
 	@Autowired
 	private IDAO dao;
-/*	
-	@Before
-	public void setUp() throws Exception {
-		dao=new DAOImpl();
-	}
-
-	@After
-	public void tearDown() throws Exception {
-		dao=null;
-	}*/
-
+	
 	@Test
 	public void testValidate() {
 		Users user=new Users("akash","akash","mac");
