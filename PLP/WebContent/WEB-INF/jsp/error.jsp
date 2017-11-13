@@ -9,6 +9,6 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
-<h1>Error Occured: ${msg}</h1>
+<h2 id="appId">Error Occured: ${msg}</h2>
 </body>
 </html>
