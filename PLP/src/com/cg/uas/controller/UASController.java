@@ -312,7 +312,7 @@ public class UASController {
 	public String update(@ModelAttribute("programsScheduled") @Valid ProgramsScheduled programsScheduled,Model model) {
 		try {
 			ProgramsScheduled programs = service.modify(programsScheduled);
-			model.addAttribute("message", "Program with Id "+programs.getScheduledProgrammeId()+"successfully modified");
+			model.addAttribute("message", "Program with Id "+programs.getScheduledProgrammeId()+" successfully modified");
 			return "admin";
 		} catch (UniversityException e) {
 			model.addAttribute("msg", e.getMessage());
@@ -328,7 +328,7 @@ public class UASController {
 			int status = service.deleteProgram(pId);
 			if(status==1)
 			{
-			model.addAttribute("message", "Program with Id "+pId+"successfully deleted");
+			model.addAttribute("message", "Program with Id "+pId+" successfully deleted");
 			}
 			return "admin";
 		} catch (UniversityException e) {
