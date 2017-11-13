@@ -9,7 +9,11 @@ import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.cg.uas.dao.DAOImpl;
 import com.cg.uas.dao.IDAO;
@@ -17,9 +21,12 @@ import com.cg.uas.entities.Application;
 import com.cg.uas.entities.Users;
 import com.cg.uas.exception.UniversityException;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("testDao.xml")
 public class DAOImplTest {
-	private DAOImpl dao;
-	
+	@Autowired
+	private IDAO dao;
+/*	
 	@Before
 	public void setUp() throws Exception {
 		dao=new DAOImpl();
@@ -28,7 +35,7 @@ public class DAOImplTest {
 	@After
 	public void tearDown() throws Exception {
 		dao=null;
-	}
+	}*/
 
 	@Test
 	public void testValidate() {
