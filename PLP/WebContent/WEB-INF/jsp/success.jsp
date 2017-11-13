@@ -12,7 +12,7 @@
 <body>
 	<h1>University Admission System - Application Submitted</h1>
 	<h2>Your Application submitted successfully</h2>
-	<h2>Application ID: ${applicant.applicationId}</h2>
+	<h2 id="appId">Application ID: ${applicant.applicationId}</h2>
 	<div id="footer">
 		<a href="index.jsp">Home</a>
 	</div>
