@@ -6,9 +6,13 @@ h1 {
 }
 
 h2 {
-	color: navy;
+	color: white;
+	
 }
-
+#appId{
+	color: navy;
+	background-color: white;
+}
 body {
 	text-align: center;
 	float: center;
