@@ -36,7 +36,7 @@ public class DAOImpl implements IDAO {
 	 */
 	@Override
 	public boolean validate(Users user) {
-		TypedQuery<Users> query = entityManager.createQuery(QueryMapper.query1,
+		TypedQuery<Users> query = entityManager.createQuery(QueryMapper.users,
 				Users.class);
 		query.setParameter("ploginid", user.getLoginId());
 		query.setParameter("ppwd", user.getPassword());
@@ -55,7 +55,7 @@ public class DAOImpl implements IDAO {
 	public List<ProgramsScheduled> viewProgrammes() throws UniversityException {
 		try {
 			TypedQuery<ProgramsScheduled> query = entityManager.createQuery(
-					QueryMapper.query2, ProgramsScheduled.class);
+					QueryMapper.programs, ProgramsScheduled.class);
 			 logger.info("Retrieved Programs Scheduled");
 			return query.getResultList();
 		} catch (Exception e) {
@@ -75,7 +75,7 @@ public class DAOImpl implements IDAO {
 
 		try {
 			TypedQuery<ProgramsOffered> query = entityManager.createQuery(
-					QueryMapper.query3, ProgramsOffered.class);
+					QueryMapper.programDetails, ProgramsOffered.class);
 			query.setParameter("pname", pname);
 			ProgramsOffered programs = query.getSingleResult();
 			logger.info("Retrieved Programs Offered");
@@ -96,7 +96,7 @@ public class DAOImpl implements IDAO {
 	public Application getStatus(int appid) throws UniversityException {
 		try {
 			TypedQuery<Application> query = entityManager.createQuery(
-					QueryMapper.query4, Application.class);
+					QueryMapper.application, Application.class);
 			query.setParameter("pappid", appid);
 			Application app = query.getSingleResult();
 			logger.info("Retrieved application status");
@@ -138,7 +138,7 @@ public class DAOImpl implements IDAO {
 
 		try {
 			TypedQuery<Application> query = entityManager.createQuery(
-					QueryMapper.query5, Application.class);
+					QueryMapper.applications, Application.class);
 			query.setParameter("pappid", programId);
 			List<Application> applications = query.getResultList();
 			logger.info("Retrieved applications for a given programId");
@@ -215,7 +215,7 @@ public class DAOImpl implements IDAO {
 
 		try {
 			TypedQuery<ProgramsScheduled> query = entityManager.createQuery(
-					QueryMapper.query6, ProgramsScheduled.class);
+					QueryMapper.programsScheduled, ProgramsScheduled.class);
 			query.setParameter("ppid", programId);
 			ProgramsScheduled prgrms = query.getSingleResult();
 			logger.info("Retrieved applications for a given programId");
@@ -232,7 +232,7 @@ public class DAOImpl implements IDAO {
 
 		try
 		{
-		 Query query = entityManager.createQuery(QueryMapper.query7);
+		 Query query = entityManager.createQuery(QueryMapper.deletePrograms);
 			  int deletedCount = query.setParameter("p", scheduledProgrammeId).executeUpdate();
 			  logger.info("Program Deleted");
 		return deletedCount ;
