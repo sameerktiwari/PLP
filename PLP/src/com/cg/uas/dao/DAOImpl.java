@@ -207,7 +207,7 @@ public class DAOImpl implements IDAO {
 		}
 
 	}
-<<<<<<< HEAD
+
 	
 	@Override
 	public ProgramsScheduled getProgram(String programId)
@@ -222,24 +222,24 @@ public class DAOImpl implements IDAO {
 			return prgrms;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			throw new UniversityException("No Applicant with thte given id");
+			throw new UniversityException("Invalid ProgramId");
 		}
 	}
-=======
+
 
 	@Override
 	public int deleteProgram(String scheduledProgrammeId) throws UniversityException {
 
 		try
 		{
-		 Query query = entityManager.createQuery(QueryMapper.query6);
+		 Query query = entityManager.createQuery(QueryMapper.query7);
 			  int deletedCount = query.setParameter("p", scheduledProgrammeId).executeUpdate();
 			  logger.info("Program Deleted");
 		return deletedCount ;
 		}
 		 catch (Exception e) {
 				logger.error(e.getMessage());
-				throw new UniversityException("Program doesnt exist");
+				throw new UniversityException("Program does not exist");
 			}
 	}
 	
@@ -257,11 +257,5 @@ public class DAOImpl implements IDAO {
 			throw new UniversityException("Problem in Updating program");
 		}
 	}
-	
-	
-	
 
-	
-
->>>>>>> 9249b50d73183cdf119b032e585b3af429f89778
 }

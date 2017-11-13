@@ -90,25 +90,38 @@ public class ServiceImpl implements IService {
 		return dao.modify(application, status);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.service.IService#setInterview(com.cg.uas.entities.Application, java.sql.Date)
+	 */
 	@Override
 	public Application setInterview(Application application,
 			Date dateOfInterview) throws UniversityException {
 		return dao.setInterview(application, dateOfInterview);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.service.IService#addParticipant(com.cg.uas.entities.Participant)
+	 */
 	@Override
 	public Participant addParticipant(Participant ppt)
 			throws UniversityException {
 		return dao.addParticipant(ppt);
 	}
-<<<<<<< HEAD
+
 	
+	/* (non-Javadoc)
+	 * @see com.cg.uas.service.IService#getProgram(java.lang.String)
+	 */
 	@Override
 	public ProgramsScheduled getProgram(String programId)
 			throws UniversityException{
 		return dao.getProgram(programId);
-=======
+	}
 
+
+	/* (non-Javadoc)
+	 * @see com.cg.uas.service.IService#deleteProgram(java.lang.String)
+	 */
 	@Override
 	public int deleteProgram(String scheduledProgrammeId)
 			throws UniversityException {
@@ -116,10 +129,13 @@ public class ServiceImpl implements IService {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.service.IService#modify(com.cg.uas.entities.ProgramsScheduled)
+	 */
 	@Override
 	public ProgramsScheduled modify(ProgramsScheduled programsScheduled)
 			throws UniversityException {
 	return dao.modify(programsScheduled);
->>>>>>> 9249b50d73183cdf119b032e585b3af429f89778
+
 	}
 }

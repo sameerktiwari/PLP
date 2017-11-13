@@ -14,6 +14,7 @@
 				<li><a href="viewAdminPrgrms.htm">View Programs Scheduled</a></li>
 			</ul>	
 </div>
+<h1>${message}</h1>
 
 <div id="footer"><p><a href="index.jsp">Home</a></p></div>
 </body>

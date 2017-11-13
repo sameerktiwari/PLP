@@ -299,7 +299,7 @@ public class UASController {
 			ProgramsScheduled programsScheduled = service.getProgram(pId);
 			model.addAttribute("prog", programsScheduled);
 			ProgramsScheduled program = new ProgramsScheduled();
-			model.addAttribute("ProgramsScheduled", program);
+			model.addAttribute("programsScheduled", program);
 			return "updateProgram";
 		} catch (UniversityException e) {
 			model.addAttribute("msg", e.getMessage());
@@ -307,4 +307,38 @@ public class UASController {
 
 		}
 	}
+	
+	@RequestMapping(value ="/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute("programsScheduled") @Valid ProgramsScheduled programsScheduled,Model model) {
+		try {
+			ProgramsScheduled programs = service.modify(programsScheduled);
+			model.addAttribute("message", "Program with Id "+programs.getScheduledProgrammeId()+"successfully modified");
+			return "admin";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+
+		}
+		
+	}
+	
+	@RequestMapping("/deletePrgrm")
+	public String deletePrgrm(@RequestParam("pId") String pId,Model model) {
+		try {
+			int status = service.deleteProgram(pId);
+			if(status==1)
+			{
+			model.addAttribute("message", "Program with Id "+pId+"successfully deleted");
+			}
+			return "admin";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+
+		}
+	}
+	
+
 }
+
+

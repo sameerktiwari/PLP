@@ -82,13 +82,12 @@ public interface IService {
 			throws UniversityException;
 	
 	/**
-<<<<<<< HEAD
 	 * @param programId
 	 * @return
 	 * @throws UniversityException
 	 */
-	public ProgramsScheduled getProgram(String programId)
-=======
+	public ProgramsScheduled getProgram(String programId) throws UniversityException;
+    /**
 	 * @param scheduledProgrammeId
 	 * @throws UniversityException
 	 */
@@ -100,6 +99,5 @@ public interface IService {
 	 * @throws UniversityException
 	 */
 	public ProgramsScheduled modify(ProgramsScheduled programsScheduled)
->>>>>>> 9249b50d73183cdf119b032e585b3af429f89778
-			throws UniversityException;
+    throws UniversityException;
 }

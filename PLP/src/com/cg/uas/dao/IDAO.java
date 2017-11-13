@@ -80,7 +80,6 @@ public interface IDAO {
 	 */
 	public Participant addParticipant(Participant ppt)
 			throws UniversityException;
-<<<<<<< HEAD
 	
 	/**
 	 * @param programId
@@ -89,9 +88,14 @@ public interface IDAO {
 	 */
 	public ProgramsScheduled getProgram(String programId)
 			throws UniversityException; 
-=======
 
-	int deleteProgram(String scheduledProgrammeId) throws UniversityException;
+
+	/**
+	 * @param scheduledProgrammeId
+	 * @return
+	 * @throws UniversityException
+	 */
+	public int deleteProgram(String scheduledProgrammeId) throws UniversityException;
 
 	/**
 	 * @param programsScheduled
@@ -100,5 +104,5 @@ public interface IDAO {
 	 */
 	public ProgramsScheduled modify(ProgramsScheduled programsScheduled)
 			throws UniversityException;
->>>>>>> 9249b50d73183cdf119b032e585b3af429f89778
+
 }
