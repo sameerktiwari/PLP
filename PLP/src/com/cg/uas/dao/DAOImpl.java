@@ -213,6 +213,9 @@ public class DAOImpl implements IDAO {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.dao.IDAO#getProgram(java.lang.String)
+	 */
 	@Override
 	public ProgramsScheduled getProgram(String programId)
 			throws UniversityException {
@@ -230,6 +233,9 @@ public class DAOImpl implements IDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.dao.IDAO#deleteProgram(java.lang.String)
+	 */
 	@Override
 	public int deleteProgram(String scheduledProgrammeId)
 			throws UniversityException {
@@ -246,6 +252,9 @@ public class DAOImpl implements IDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.dao.IDAO#modify(com.cg.uas.entities.ProgramsScheduled)
+	 */
 	@Override
 	public ProgramsScheduled modify(ProgramsScheduled programsScheduled)
 			throws UniversityException {

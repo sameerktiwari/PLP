@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.apache.log4j.Logger;
 
 import com.cg.uas.entities.Application;
 import com.cg.uas.entities.Participant;
@@ -22,10 +23,13 @@ import com.cg.uas.entities.ProgramsScheduled;
 import com.cg.uas.entities.Users;
 import com.cg.uas.exception.UniversityException;
 import com.cg.uas.service.IService;
-import com.sun.media.jfxmedia.logging.Logger;
 
 @Controller
 public class UASController {
+	
+	private static Logger logger = Logger
+			.getLogger(com.cg.uas.dao.DAOImpl.class);
+	
 	@Autowired
 	private IService service;
 
@@ -71,6 +75,7 @@ public class UASController {
 			model.addAttribute("ProgramsScheduled", programs);
 			return "viewProgram";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 
@@ -86,6 +91,7 @@ public class UASController {
 			model.addAttribute("pId", pId);
 			return "programDetail";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 		}
@@ -111,6 +117,7 @@ public class UASController {
 				model.addAttribute("applicant", ap);
 				return "success";
 			} catch (UniversityException e) {
+				logger.error(e);
 				model.addAttribute("msg", e.getMessage());
 				return "error";
 			}
@@ -131,6 +138,7 @@ public class UASController {
 			return "viewStatus";
 
 		} catch (UniversityException|NumberFormatException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 		}
@@ -146,6 +154,7 @@ public class UASController {
 			model.addAttribute("ProgramsScheduled", programs);
 			return "viewProgramForMAC";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 		}
@@ -167,6 +176,7 @@ public class UASController {
 			model.addAttribute("Application", app);
 			return "viewApplications";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 		}
@@ -244,6 +254,7 @@ public class UASController {
 				return "viewApplication";
 			}
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 		}
@@ -269,6 +280,7 @@ public class UASController {
 				return "viewApplication";
 			}
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 
@@ -285,6 +297,7 @@ public class UASController {
 			model.addAttribute("ProgramsScheduled", programs);
 			return "viewProgramForAdmin";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 
@@ -300,6 +313,7 @@ public class UASController {
 			model.addAttribute("programsScheduled", program);
 			return "updateProgram";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 
@@ -317,6 +331,7 @@ public class UASController {
 							+ " successfully modified");
 			return "admin";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 
@@ -334,6 +349,7 @@ public class UASController {
 			}
 			return "admin";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 

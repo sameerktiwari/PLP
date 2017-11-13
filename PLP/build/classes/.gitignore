@@ -1,2 +1,4 @@
 /com/
 /oracle.properties
+/.sonar/
+/sonar-project.properties
