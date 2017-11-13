@@ -71,6 +71,9 @@ public class ServiceImpl implements IService {
 		return dao.save(app);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.service.IService#getApplicant(java.lang.String)
+	 */
 	@Override
 	public List<Application> getApplicant(String programId)
 			throws UniversityException {
@@ -78,6 +81,9 @@ public class ServiceImpl implements IService {
 		return dao.getApplicant(programId);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cg.uas.service.IService#modify(com.cg.uas.entities.Application, java.lang.String)
+	 */
 	@Override
 	public Application modify(Application application, String status)
 			throws UniversityException {
@@ -95,10 +101,25 @@ public class ServiceImpl implements IService {
 			throws UniversityException {
 		return dao.addParticipant(ppt);
 	}
+<<<<<<< HEAD
 	
 	@Override
 	public ProgramsScheduled getProgram(String programId)
 			throws UniversityException{
 		return dao.getProgram(programId);
+=======
+
+	@Override
+	public int deleteProgram(String scheduledProgrammeId)
+			throws UniversityException {
+		return dao.deleteProgram(scheduledProgrammeId);
+		
+	}
+
+	@Override
+	public ProgramsScheduled modify(ProgramsScheduled programsScheduled)
+			throws UniversityException {
+	return dao.modify(programsScheduled);
+>>>>>>> 9249b50d73183cdf119b032e585b3af429f89778
 	}
 }

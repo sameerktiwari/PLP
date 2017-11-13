@@ -43,10 +43,6 @@ public interface IDAO {
 	/**
 	 * @param app
 	 * @return
-	 */
-	/**
-	 * @param app
-	 * @return
 	 * @throws UniversityException
 	 */
 	public Application save(Application app) throws UniversityException;
@@ -84,6 +80,7 @@ public interface IDAO {
 	 */
 	public Participant addParticipant(Participant ppt)
 			throws UniversityException;
+<<<<<<< HEAD
 	
 	/**
 	 * @param programId
@@ -92,4 +89,16 @@ public interface IDAO {
 	 */
 	public ProgramsScheduled getProgram(String programId)
 			throws UniversityException; 
+=======
+
+	int deleteProgram(String scheduledProgrammeId) throws UniversityException;
+
+	/**
+	 * @param programsScheduled
+	 * @return
+	 * @throws UniversityException
+	 */
+	public ProgramsScheduled modify(ProgramsScheduled programsScheduled)
+			throws UniversityException;
+>>>>>>> 9249b50d73183cdf119b032e585b3af429f89778
 }
