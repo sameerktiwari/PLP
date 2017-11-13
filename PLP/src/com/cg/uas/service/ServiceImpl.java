@@ -71,7 +71,9 @@ public class ServiceImpl implements IService {
 		return dao.save(app);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.cg.uas.service.IService#getApplicant(java.lang.String)
 	 */
 	@Override
@@ -81,8 +83,11 @@ public class ServiceImpl implements IService {
 		return dao.getApplicant(programId);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cg.uas.service.IService#modify(com.cg.uas.entities.Application, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.cg.uas.service.IService#modify(com.cg.uas.entities.Application,
+	 * java.lang.String)
 	 */
 	@Override
 	public Application modify(Application application, String status)
@@ -90,8 +95,12 @@ public class ServiceImpl implements IService {
 		return dao.modify(application, status);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cg.uas.service.IService#setInterview(com.cg.uas.entities.Application, java.sql.Date)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.cg.uas.service.IService#setInterview(com.cg.uas.entities.Application,
+	 * java.sql.Date)
 	 */
 	@Override
 	public Application setInterview(Application application,
@@ -99,8 +108,12 @@ public class ServiceImpl implements IService {
 		return dao.setInterview(application, dateOfInterview);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cg.uas.service.IService#addParticipant(com.cg.uas.entities.Participant)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.cg.uas.service.IService#addParticipant(com.cg.uas.entities.Participant
+	 * )
 	 */
 	@Override
 	public Participant addParticipant(Participant ppt)
@@ -108,34 +121,39 @@ public class ServiceImpl implements IService {
 		return dao.addParticipant(ppt);
 	}
 
-	
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.cg.uas.service.IService#getProgram(java.lang.String)
 	 */
 	@Override
 	public ProgramsScheduled getProgram(String programId)
-			throws UniversityException{
+			throws UniversityException {
 		return dao.getProgram(programId);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.cg.uas.service.IService#deleteProgram(java.lang.String)
 	 */
 	@Override
 	public int deleteProgram(String scheduledProgrammeId)
 			throws UniversityException {
 		return dao.deleteProgram(scheduledProgrammeId);
-		
+
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cg.uas.service.IService#modify(com.cg.uas.entities.ProgramsScheduled)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.cg.uas.service.IService#modify(com.cg.uas.entities.ProgramsScheduled)
 	 */
 	@Override
 	public ProgramsScheduled modify(ProgramsScheduled programsScheduled)
 			throws UniversityException {
-	return dao.modify(programsScheduled);
+		return dao.modify(programsScheduled);
 
 	}
 }

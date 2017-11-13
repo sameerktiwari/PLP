@@ -80,24 +80,27 @@ public interface IService {
 	 */
 	public Participant addParticipant(Participant ppt)
 			throws UniversityException;
-	
+
 	/**
 	 * @param programId
 	 * @return
 	 * @throws UniversityException
 	 */
-	public ProgramsScheduled getProgram(String programId) throws UniversityException;
-    /**
+	public ProgramsScheduled getProgram(String programId)
+			throws UniversityException;
+
+	/**
 	 * @param scheduledProgrammeId
 	 * @throws UniversityException
 	 */
-	public int deleteProgram(String scheduledProgrammeId) throws UniversityException;
-	
+	public int deleteProgram(String scheduledProgrammeId)
+			throws UniversityException;
+
 	/**
 	 * @param programsScheduled
 	 * @return
 	 * @throws UniversityException
 	 */
 	public ProgramsScheduled modify(ProgramsScheduled programsScheduled)
-    throws UniversityException;
+			throws UniversityException;
 }

@@ -1,3 +1,9 @@
 /com/
+<<<<<<< HEAD
 /jpaContext.xml
 /log4j.properties
+=======
+/oracle.properties
+/.sonar/
+/sonar-project.properties
+>>>>>>> bc79b304da3c4aa37923bdd16aaaa33f4d784db3

@@ -80,22 +80,22 @@ public interface IDAO {
 	 */
 	public Participant addParticipant(Participant ppt)
 			throws UniversityException;
-	
+
 	/**
 	 * @param programId
 	 * @return
 	 * @throws UniversityException
 	 */
 	public ProgramsScheduled getProgram(String programId)
-			throws UniversityException; 
-
+			throws UniversityException;
 
 	/**
 	 * @param scheduledProgrammeId
 	 * @return
 	 * @throws UniversityException
 	 */
-	public int deleteProgram(String scheduledProgrammeId) throws UniversityException;
+	public int deleteProgram(String scheduledProgrammeId)
+			throws UniversityException;
 
 	/**
 	 * @param programsScheduled

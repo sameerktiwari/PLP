@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.apache.log4j.Logger;
 
 import com.cg.uas.entities.Application;
 import com.cg.uas.entities.Participant;
@@ -25,6 +26,10 @@ import com.cg.uas.service.IService;
 
 @Controller
 public class UASController {
+	
+	private static Logger logger = Logger
+			.getLogger(com.cg.uas.dao.DAOImpl.class);
+	
 	@Autowired
 	private IService service;
 
@@ -70,6 +75,7 @@ public class UASController {
 			model.addAttribute("ProgramsScheduled", programs);
 			return "viewProgram";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 
@@ -85,6 +91,7 @@ public class UASController {
 			model.addAttribute("pId", pId);
 			return "programDetail";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 		}
@@ -111,6 +118,7 @@ public class UASController {
 				model.addAttribute("applicant", ap);
 				return "success";
 			} catch (UniversityException e) {
+				logger.error(e);
 				model.addAttribute("msg", e.getMessage());
 				return "error";
 			}
@@ -130,10 +138,8 @@ public class UASController {
 			model.addAttribute("applicant", app);
 			return "viewStatus";
 
-		} catch (NumberFormatException e) {
-			model.addAttribute("msg", e.getMessage());
-			return "error";
-		} catch (UniversityException e) {
+		} catch (UniversityException|NumberFormatException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 		}
@@ -149,6 +155,7 @@ public class UASController {
 			model.addAttribute("ProgramsScheduled", programs);
 			return "viewProgramForMAC";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 		}
@@ -170,6 +177,7 @@ public class UASController {
 			model.addAttribute("Application", app);
 			return "viewApplications";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 		}
@@ -247,6 +255,7 @@ public class UASController {
 				return "viewApplication";
 			}
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 		}
@@ -272,12 +281,13 @@ public class UASController {
 				return "viewApplication";
 			}
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 
 		}
 	}
-	
+
 	@RequestMapping("/viewAdminPrgrms")
 	public String viewAdminPrgrms(Model model) {
 		try {
@@ -288,14 +298,15 @@ public class UASController {
 			model.addAttribute("ProgramsScheduled", programs);
 			return "viewProgramForAdmin";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 
 		}
 	}
-	
+
 	@RequestMapping("/updatePrgrm")
-	public String updatePrgrm(@RequestParam("pId") String pId,Model model) {
+	public String updatePrgrm(@RequestParam("pId") String pId, Model model) {
 		try {
 			ProgramsScheduled programsScheduled = service.getProgram(pId);
 			model.addAttribute("prog", programsScheduled);
@@ -303,43 +314,47 @@ public class UASController {
 			model.addAttribute("programsScheduled", program);
 			return "updateProgram";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 
 		}
 	}
-	
-	@RequestMapping(value ="/update", method = RequestMethod.POST)
-	public String update(@ModelAttribute("programsScheduled") @Valid ProgramsScheduled programsScheduled,Model model) {
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(
+			@ModelAttribute("programsScheduled") @Valid ProgramsScheduled programsScheduled,
+			Model model) {
 		try {
 			ProgramsScheduled programs = service.modify(programsScheduled);
-			model.addAttribute("message", "Program with Id "+programs.getScheduledProgrammeId()+" successfully modified");
+			model.addAttribute("message",
+					"Program with Id " + programs.getScheduledProgrammeId()
+							+ " successfully modified");
 			return "admin";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 
 		}
-		
+
 	}
-	
+
 	@RequestMapping("/deletePrgrm")
-	public String deletePrgrm(@RequestParam("pId") String pId,Model model) {
+	public String deletePrgrm(@RequestParam("pId") String pId, Model model) {
 		try {
 			int status = service.deleteProgram(pId);
-			if(status==1)
-			{
-			model.addAttribute("message", "Program with Id "+pId+" successfully deleted");
+			if (status == 1) {
+				model.addAttribute("message", "Program with Id " + pId
+						+ " successfully deleted");
 			}
 			return "admin";
 		} catch (UniversityException e) {
+			logger.error(e);
 			model.addAttribute("msg", e.getMessage());
 			return "error";
 
 		}
 	}
-	
 
 }
-
-

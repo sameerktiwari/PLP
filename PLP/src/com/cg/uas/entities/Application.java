@@ -2,6 +2,7 @@ package com.cg.uas.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.Email;
 
 /**
@@ -116,7 +118,7 @@ public class Application implements Serializable {
 
 	public Application(String fullName, Date dateOfBirth,
 			String highestQualification, int marksObtained, String goals,
-			String email, String scheduledProgramId,String status) {
+			String email, String scheduledProgramId, String status) {
 		this.fullName = fullName;
 		this.dateOfBirth = dateOfBirth;
 		this.highestQualification = highestQualification;
@@ -124,7 +126,7 @@ public class Application implements Serializable {
 		this.email = email;
 		this.goals = goals;
 		this.scheduledProgramId = scheduledProgramId;
-		this.status=status;
+		this.status = status;
 	}
 
 	public Application(int applicationId, String fullName, Date dateOfBirth,
@@ -141,6 +143,7 @@ public class Application implements Serializable {
 	}
 
 	public Application() {
+		super();
 	}
 
 	/**/
