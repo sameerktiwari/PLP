@@ -276,4 +276,35 @@ public class UASController {
 
 		}
 	}
+	
+	@RequestMapping("/viewAdminPrgrms")
+	public String viewAdminPrgrms(Model model) {
+		try {
+			List<ProgramsScheduled> programsScheduled = service
+					.viewProgrammes();
+			model.addAttribute("programList", programsScheduled);
+			ProgramsScheduled programs = new ProgramsScheduled();
+			model.addAttribute("ProgramsScheduled", programs);
+			return "viewProgramForAdmin";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+
+		}
+	}
+	
+	@RequestMapping("/updatePrgrm")
+	public String updatePrgrm(@RequestParam("pId") String pId,Model model) {
+		try {
+			ProgramsScheduled programsScheduled = service.getProgram(pId);
+			model.addAttribute("prog", programsScheduled);
+			ProgramsScheduled program = new ProgramsScheduled();
+			model.addAttribute("ProgramsScheduled", program);
+			return "updateProgram";
+		} catch (UniversityException e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error";
+
+		}
+	}
 }

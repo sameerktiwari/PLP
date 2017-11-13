@@ -2,6 +2,7 @@ package com.cg.uas.dao;
 
 import java.sql.Date;
 import java.util.List;
+
 import com.cg.uas.entities.Application;
 import com.cg.uas.entities.Participant;
 import com.cg.uas.entities.ProgramsOffered;
@@ -83,4 +84,12 @@ public interface IDAO {
 	 */
 	public Participant addParticipant(Participant ppt)
 			throws UniversityException;
+	
+	/**
+	 * @param programId
+	 * @return
+	 * @throws UniversityException
+	 */
+	public ProgramsScheduled getProgram(String programId)
+			throws UniversityException; 
 }

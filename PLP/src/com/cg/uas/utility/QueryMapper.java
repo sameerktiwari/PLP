@@ -11,5 +11,7 @@ public interface QueryMapper {
 	public static final String query4 = "SELECT e FROM Application e WHERE e.applicationId=:pappid";
 
 	public static final String query5 = "SELECT e FROM Application e WHERE e.scheduledProgramId=:pappid";
+	
+	public static final String query6 = "SELECT e FROM ProgramsScheduled e WHERE e.scheduledProgramId=:ppid";
 
 }

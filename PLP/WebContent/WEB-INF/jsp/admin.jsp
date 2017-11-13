@@ -9,5 +9,12 @@
 </head>
 <body>
 <h1>University Admission System - Adminstrator</h1>
+<div id="nav">
+			<ul>
+				<li><a href="viewAdminPrgrms.htm">View Programs Scheduled</a></li>
+			</ul>	
+</div>
+
+<div id="footer"><p><a href="index.jsp">Home</a></p></div>
 </body>
 </html>

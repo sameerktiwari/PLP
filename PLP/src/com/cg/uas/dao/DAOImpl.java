@@ -202,4 +202,21 @@ public class DAOImpl implements IDAO {
 		}
 
 	}
+	
+	@Override
+	public ProgramsScheduled getProgram(String programId)
+			throws UniversityException {
+
+		try {
+			TypedQuery<ProgramsScheduled> query = entityManager.createQuery(
+					QueryMapper.query6, ProgramsScheduled.class);
+			query.setParameter("ppid", programId);
+			ProgramsScheduled prgrms = query.getSingleResult();
+			logger.info("Retrieved applications for a given programId");
+			return prgrms;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			throw new UniversityException("No Applicant with thte given id");
+		}
+	}
 }

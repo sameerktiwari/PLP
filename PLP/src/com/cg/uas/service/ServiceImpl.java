@@ -2,8 +2,10 @@ package com.cg.uas.service;
 
 import java.sql.Date;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.cg.uas.dao.IDAO;
 import com.cg.uas.entities.Application;
 import com.cg.uas.entities.Participant;
@@ -92,5 +94,11 @@ public class ServiceImpl implements IService {
 	public Participant addParticipant(Participant ppt)
 			throws UniversityException {
 		return dao.addParticipant(ppt);
+	}
+	
+	@Override
+	public ProgramsScheduled getProgram(String programId)
+			throws UniversityException{
+		return dao.getProgram(programId);
 	}
 }
