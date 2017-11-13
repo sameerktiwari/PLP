@@ -23,14 +23,20 @@
 			</tr>
 			<tr>
 				<td>Date of Birth:</td>
-				<td><form:input id="dateOfBirth" path="dateOfBirth" required="required"
-						placeholder="yyyy-mm-dd" title="Enter valid Date of Birth" /> <form:errors
+				<td><form:input id="dateOfBirth" path="dateOfBirth"
+						required="required" placeholder="yyyy-mm-dd"
+						title="Enter valid Date of Birth" /> <form:errors
 						path="dateOfBirth" /></td>
 			</tr>
-			<tr>
+			<%-- <tr>
 				<td>Highest Qualification:</td>
 				<td><form:input path="highestQualification" required="required" />
 					<form:errors path="highestQualification" /></td>
+			</tr>  --%>
+
+			<tr>
+				<td>Highest Qualification</td>
+				<td><form:select path="highestQualification" items="${domainlist}" required="required"></form:select></td>
 			</tr>
 			<tr>
 				<td>Marks Obtained:</td>
@@ -53,7 +59,8 @@
 				<form:hidden path="status" value="Pending" />
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="Submit Details" onclick="return isBefore()"></td>
+				<td colspan="2"><input type="submit" value="Submit Details"
+					onclick="return isBefore()"></td>
 			</tr>
 		</table>
 		<form:hidden path="scheduledProgramId" value="${pId}" />

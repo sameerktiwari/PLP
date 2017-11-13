@@ -94,6 +94,7 @@ public class UASController {
 	public String apply(@RequestParam("pId") String pId, Model model) {
 		Application app = new Application();
 		model.addAttribute("pId", pId);
+		model.addAttribute("domainlist", new String[]{"Select","Btech","Mtech","MBA","Any Other"});
 		model.addAttribute("Application", app);
 		return "application";
 	}
