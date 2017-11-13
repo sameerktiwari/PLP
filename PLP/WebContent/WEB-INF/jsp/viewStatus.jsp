@@ -6,11 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View Status</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
 	<h1>University Admission System- Applicant</h1>
 	<form action="getStatus.htm">
-		<table>
+		<table align="center">
 			<tr>
 				<td>Enter your Application ID:</td>
 				<td><input type="text" name="appId"></td>
@@ -21,7 +22,7 @@
 		</table>
 		<c:if test="${applicant ne null}">
 			<h3>Your Application status: ${applicant.status}</h3>
-			<table>
+			<table align="center">
 				<tr>
 					<td>Application ID:</td>
 					<td>${applicant.applicationId}</td>

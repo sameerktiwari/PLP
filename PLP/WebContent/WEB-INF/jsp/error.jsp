@@ -6,8 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
-<h2>Error Occured: ${msg}</h2>
+<h1>Error Occured: ${msg}</h1>
 </body>
 </html>

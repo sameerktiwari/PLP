@@ -15,7 +15,7 @@ body {
 	background-image: url("../images/bckgrnd.jpg");
 	background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:1920px  1080px ;
 }
 a {
 	color: black;
